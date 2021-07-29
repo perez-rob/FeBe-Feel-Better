@@ -5,6 +5,7 @@ const withAuth = require('../utils/auth');
 // import auth middleware
 
 
+
 router.get("/", async (req, res) => {
   res.render("loginPage", {});
 });
