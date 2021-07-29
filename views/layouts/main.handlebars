@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feel Better</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="flex-column justify-space-around">
+    
+    <header class="display-flex justify-space-between align-center p-2">
+      <div class="navbar-fixed">
+        <nav>
+            
+            <div class="nav-wrapper light-blue">
+            
+            <a href="#" class="brand-logo left">FeBe - Feel Better</a>
+                    <ul id="nav-mobile" class="right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Activities</a></li>
+                <li><a href="#">Placeholder?</a></li>
+                {{#if logged_in}}
+                <li><button class="btn" id="logout">logout</button></li>
+                {{/if}}
+            </ul>
+            </h2>
+            </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container container-fluid mt-5">
+      {{{ body }}}
+    </main>
+
+    <footer>
+      
+    </footer>
+  </div>
+
+  {{#if logged_in}}
+  {{!-- PH for logout script to be added in public files --}}
+  {{!-- <script src="/js/logout.js"></script> --}}
+  {{/if}}
+</body>
+
+</html>
