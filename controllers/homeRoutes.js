@@ -81,7 +81,7 @@ router.get("/test/mood/activity", async (req, res) => {
 });
 
 // GETS the number of times a certain activity was beneficial for a certain mood
-router.get("/test/count/:mood/:activity", async (req, res) => {
+router.get("/test/count/:mood_id/:activity_id", async (req, res) => {
   try {
     const aumData = await AUM.sum("result", {
       where: {

@@ -37,4 +37,35 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put('/:id', async (req,res)=>{
+  try{
+    const updateActivity = await Activity.update ({
+      title:req.body.title,
+      description:req.body.description,
+    },
+    {
+      where:{
+        id:req.params.id,
+      },
+    }
+    );
+    res.status(200).json(updateActivity);
+  }
+  catch(err) {res.status(500).json(err)}; 
+} );
+router.delete('/:id', async (req,res)=> 
+{
+  try{
+    const deleteActivity= await Activity.destroy({
+      where:{
+        id:req.params.id,
+      },
+    });
+    res.status(200).json(deleteActivity);
+  }
+  catch(err){
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
