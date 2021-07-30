@@ -1,0 +1,23 @@
+[
+    {
+      "name": "Enjoyment",
+      "description": "happyness, love, relief, contentment, amusement, joy, pride, excitement, peace, satisfaction, compassion"
+    },
+    {
+      "name": "Sadness",
+      "description": "lonely, heartbreak, gloomy, disappointed, hopeless, grieved, unhappy, lost, troubled, resigned, miserable"
+    },
+    {
+      "name": "Fear",
+      "description": "worried, doubtful, nervous, anxious, terrified, panicked, horrified, desperate, confused, stressed"
+    
+    {
+      "name": "anger",
+      "description": "annoyed, frustrated, peeved, contrary, bitter, infuriated, irritated, mad, cheated, vengeful, insulted"
+    },
+    {
+      "name": "Disgust",
+      "description": "Dislike, revulsion, loathing, disapproving, offended, horrified, uncomfortable, nauseated, disturbed, withdrawal, aversion"
+    },
+    
+  ]
