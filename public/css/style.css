@@ -1,17 +1,8 @@
 body {
 	background-image: url(images/background.png);
 	background-color: white;
+    background-size: cover;
   }
-
-li {
-  font-size: 100px;
-}
-
-.footer-fixed {
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-}
 
 main {
   margin-bottom: 5rem;
@@ -22,3 +13,9 @@ main {
   top: 50%;
   right: 50%;
 }
+
+.footer-fixed {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }

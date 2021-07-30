@@ -8,7 +8,24 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/dashboard", async (req, res) => {
-  res.render("dashboard", {});
+  try {
+    const moodData = await Mood.findAll({
+      attributes: ["name", "id"],
+    });
+
+    if (!moodData) {
+      res.status(400).json({ message: "ERROR" });
+    }
+    const moods = await moodData.map((mood) => mood.get({plain: true}));
+    res.render("dashboard", {moods, 
+      loggedIn: req.session.loggedIn,
+      userId: req.session.user_id,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+
 });
 
 // *********************  TEST ROUTES FOR DB DEV  ************************ //
