@@ -1,63 +1,47 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
 
-    <form id="login-form" class="form">
-      <div class="input-field">
-        <input class="form-input" type="text" id="user-login" required />
-        <label for="user-login">username or email:</label>
-      </div>
-      <div class="input-field">
-        <input
-          class="form-input"
-          type="password"
-          id="password-login"
-          required
-        />
-        <label for="password-login">password:</label>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-6">
-    <h2>Signup</h2>
+<div id="banner">
+<pre>
+Welcome
+  to
+ FeBe
+</pre>
+</div>
 
-    <form id="signup-form" class="form">
-      <div class="input-field">
-        <input class="form-input" type="text" id="username-signup" required />
-        <label for="username-signup">username:</label>
-      </div>
-      <div class="input-field">
-        <input class="form-input" type="text" id="email-signup" required />
-        <label for="email-signup">email:</label>
-      </div>
-      <div class="row">
-        <div class="input-field col s5">
+<div id="intro-info">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum nulla cum architecto facilis adipisci possimus veritatis dolorem ab sapiente. Reiciendis beatae ipsa ut explicabo voluptatem quasi animi praesentium expedita dicta!</p>
+</div>
+<div class="parallax-container">
+      <div class="parallax"><img src="/images/legs.jpg"></div>
+    </div>
+<div class="container container-fluid mt-5">
+  <div class="row">
+    <div id="side-pic" class="col m4"></div>
+    <div class="col m7 push-m1 form-box">
+      <h2>Login</h2>
+
+      <form id="login-form" class="form">
+        <div class="input-field">
+          <input class="form-input text-black" type="text" id="user-login" required />
+          <label for="user-login" class="text-black">username or email:</label>
+        </div>
+        <div class="input-field">
           <input
             class="form-input"
             type="password"
-            id="password-signup"
+            id="password-login"
             required
           />
-          <label for="password-signup">password:</label>
+          <label for="password-login">password:</label>
         </div>
-        <div class="input-field col s5">
-          <input
-            class="form-input"
-            type="password"
-            id="password-confirm"
-            required
-          />
-          <label for="password-confirm">confirm password:</label>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">login</button>
         </div>
-        <div class="form-group col s2">
-          <button class="btn btn-primary" type="submit">signup</button>
-        </div>
-      </div>
-    </form>
+      </form>
+    <div><a id="then-sign-up" href="/signup">Don't have account? Join Us!</a></div>
+    </div>
+    
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./js/login.js"></script>
