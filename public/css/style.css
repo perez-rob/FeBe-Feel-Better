@@ -1,3 +1,8 @@
+body {
+	background-image: url(images/background.png);
+	background-color: white;
+  }
+
 li {
   font-size: 100px;
 }
