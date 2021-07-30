@@ -7,10 +7,22 @@ router.get("/", async (req, res) => {
   res.render("loginPage", {});
 });
 
-router.get("/test/user", async (req, res) => {
+// *********************  TEST ROUTES FOR DB DEV  ************************ //
+
+// GETS a user with their activities and moods, this is where you use req.params
+router.get("/test/user/:id", async (req, res) => {
   try {
-    const userData = await User.findAll({
-      include: [{ model: AUM, include: [{ model: Mood }] }],
+    const userData = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: AUM,
+          attributes: ["id"],
+          include: [
+            { model: Mood, attributes: ["name"] },
+            { model: Activity, attributes: ["title"] },
+          ],
+        },
+      ],
     });
 
     if (!userData) {
@@ -23,10 +35,18 @@ router.get("/test/user", async (req, res) => {
   }
 });
 
-router.get("/test/aum", async (req, res) => {
+// GETS moods with their activities and if the experience was positive or not
+router.get("/test/mood/activity", async (req, res) => {
   try {
-    const aumData = await AUM.findAll({
-      include: [{ model: User }],
+    const aumData = await Mood.findAll({
+      attributes: ["name"],
+      include: [
+        {
+          model: AUM,
+          attributes: ["user_id", "result"],
+          include: [{ model: Activity, attributes: ["title"] }],
+        },
+      ],
     });
 
     if (!aumData) {
@@ -38,5 +58,27 @@ router.get("/test/aum", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// GETS the number of times a certain activity was beneficial for a certain mood
+router.get("/test/count/:mood/:activity", async (req, res) => {
+  try {
+    const aumData = await AUM.sum("result", {
+      where: {
+        mood_id: req.params.mood,
+        activity_id: req.params.activity,
+      },
+    });
+
+    if (!aumData) {
+      res.status(400).json({ message: "ERROR" });
+    }
+
+    res.status(200).json(aumData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// *********************  END TEST ROUTES  ************************ //
 
 module.exports = router;
