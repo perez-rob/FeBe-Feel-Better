@@ -10,7 +10,7 @@ const loginForm = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (res.ok) {
-      document.location.replace("/profile");
+      document.location.replace("/dashboard");
     } else {
       alert(res.statusText);
     }
@@ -38,7 +38,7 @@ const signUp = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (res.ok) {
-      document.location.replace("/profile");
+      document.location.replace("/dashboard");
     } else {
       const resMsg = await res.json();
       console.log(resMsg);

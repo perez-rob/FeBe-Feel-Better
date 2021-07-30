@@ -4,12 +4,6 @@ body {
     background-size: cover;
   }
 
-li {
-  font-size: 100px;
-}
-
-
-
 main {
   margin-bottom: 5rem;
 }
@@ -21,7 +15,7 @@ main {
 }
 
 .footer-fixed {
-    position: sticky;
+    position: fixed;
     bottom: 0;
     width: 100%;
   }
