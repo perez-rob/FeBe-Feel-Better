@@ -7,6 +7,10 @@ router.get("/", async (req, res) => {
   res.render("loginPage", {});
 });
 
+router.get("/dashboard", async (req, res) => {
+  res.render("dashboard", {});
+});
+
 // *********************  TEST ROUTES FOR DB DEV  ************************ //
 
 // GETS a user with their activities and moods, this is where you use req.params
