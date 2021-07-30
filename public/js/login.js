@@ -10,9 +10,11 @@ const loginForm = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (res.ok) {
-      document.location.replace("/profile");
+      document.location.replace("/dashboard");
     } else {
-      alert(res.statusText);
+      const resMsg = await res.json();
+      console.log('this is', resMsg);
+      if(resMsg.message==="Incorrect email/password"){M.toast({ html: "Invalid email or password ! Please try again." });};
     }
   }
 };
@@ -38,7 +40,7 @@ const signUp = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (res.ok) {
-      document.location.replace("/profile");
+      document.location.replace("/dashboard");
     } else {
       const resMsg = await res.json();
       console.log(resMsg);
