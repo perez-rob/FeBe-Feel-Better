@@ -4,11 +4,21 @@ body {
   }
 
 li {
-    font-size: 100px;
+  font-size: 100px;
 }
 
 .footer-fixed {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
+
+main {
+  margin-bottom: 5rem;
+}
+
+#toast-container {
+  min-width: 8%;
+  top: 50%;
+  right: 50%;
 }

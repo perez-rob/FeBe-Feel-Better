@@ -1,20 +1,17 @@
 [
-    {
-      "name": "Jonathon",
-      "username": "Salacious",
-      "email": "jon@hotmail.com",
-      "password": "password12345"
-    },
-    {
-      "name": "Lernantino",
-      "username": "Lernydude",
-      "email": "lernantino@gmail.com",
-      "password": "password12345"
-    },
-    {
-      "name": "Amiko",
-      "username": "Mimigrand",
-      "email": "amiko2k20@aol.com",
-      "password": "password12345"
-    }
-  ]
+  {
+    "username": "Salacious",
+    "email": "jon@hotmail.com",
+    "password": "password12345"
+  },
+  {
+    "username": "Lernydude",
+    "email": "lernantino@gmail.com",
+    "password": "password12345"
+  },
+  {
+    "username": "Mimigrand",
+    "email": "amiko2k20@aol.com",
+    "password": "password12345"
+  }
+]

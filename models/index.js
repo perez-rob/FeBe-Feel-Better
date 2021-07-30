@@ -1,35 +1,32 @@
 const User = require("./User");
 const Activity = require("./Activity");
 const Mood = require("./Mood");
-const UserActivity = require("./UserActivity");
-const UserMood = require("./UserMood");
+const AUM = require("./AUM");
 
+User.hasMany(AUM, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
 
-User.belongsToMany(Activity, {
-  through: {
-    model: UserActivity,
-  },
+AUM.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-Activity.belongsToMany(User, {
-  through: {
-    model: UserActivity,
-  },
+Activity.hasMany(AUM, {
+  foreignKey: "activity_id",
+  onDelete: "SET NULL",
+});
+
+AUM.belongsTo(Activity, {
   foreignKey: "activity_id",
 });
 
-User.belongsToMany(Mood, {
-  through: {
-    model: UserMood,
-  },
-  foreignKey: "user_id",
+Mood.hasMany(AUM, {
+  foreignKey: "mood_id",
+  onDelete: "SET NULL",
 });
 
-Mood.belongsToMany(User, {
-  through: {
-    model: UserMood,
-  },
+AUM.belongsTo(Mood, {
   foreignKey: "mood_id",
 });
 
@@ -37,6 +34,5 @@ module.exports = {
   User,
   Activity,
   Mood,
-  UserActivity,
-  UserMood,
+  AUM,
 };
