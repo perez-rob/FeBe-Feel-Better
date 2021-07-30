@@ -3,8 +3,6 @@ const sequelize = require("../config/connection");
 
 class AUM extends Model {}
 
-// ??? MIGHT NOT NEED date_time HERE ??? //
-
 AUM.init(
   {
     id: {
