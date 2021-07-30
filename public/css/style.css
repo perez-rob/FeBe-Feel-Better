@@ -1,6 +1,7 @@
 body {
 	background-image: url(images/background.png);
 	background-color: white;
+	background-size: cover;
   }
 
 li {

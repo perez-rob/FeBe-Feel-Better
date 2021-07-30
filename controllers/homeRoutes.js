@@ -4,6 +4,10 @@ const Op = require("sequelize").Op;
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
   res.render("loginPage", {});
 });
 
