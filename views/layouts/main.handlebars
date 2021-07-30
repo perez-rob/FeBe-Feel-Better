@@ -37,14 +37,23 @@
       {{{ body }}}
     </main>
 
-    <footer>
-      
+    <div class="footer-fixed">
+    <footer class="page-footer blue">
+        
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2021 TBD
+                    <a class="grey-text text-lighten-4 right" href="#">About the Team</a>
+                </div>
+            </div>
+        
     </footer>
+    </div>
   </div>
 
   {{#if logged_in}}
   {{!-- PH for logout script to be added in public files --}}
-  {{!-- <script src="/js/logout.js"></script> --}}
+  <script src="/js/logout.js"></script>
   {{/if}}
 </body>
 
