@@ -12,6 +12,7 @@ const loginForm = async (event) => {
     if (res.ok) {
       document.location.replace("/profile");
     } else {
+      console.log(res);
       alert(res.statusText);
     }
   }
@@ -41,6 +42,7 @@ const signUp = async (event) => {
       document.location.replace("/profile");
     } else {
       const resMsg = await res.json();
+
       console.log(resMsg);
       switch (resMsg.errors[0].message) {
         case "user.username must be unique":
@@ -54,12 +56,21 @@ const signUp = async (event) => {
         case "Validation len on password failed":
           M.toast({ html: "Passwords must be at least 8 characters" });
           break;
+        case "Validation isEmail on email failed":
+          M.toast({ html: "Please enter a valid email address" });
+          break;
         default:
           M.toast({ html: "Server error, please try again later" });
       }
     }
   }
 };
+
+
+$(document).ready(function(){
+  $('.parallax').parallax();
+});
+
 
 document.getElementById("login-form").addEventListener("submit", loginForm);
 document.getElementById("signup-form").addEventListener("submit", signUp);

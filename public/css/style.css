@@ -1,14 +1,53 @@
 body {
-	background-image: url(images/background.png);
-	background-color: white;
-  }
+  background-image: url(images/background2.png);
+  background-color: white;
+  background-size: cover;
+}
+
+#banner {
+  background-image: url(images/collage.png);
+  width: 100vw;
+  height: 500px;
+  background-size: 100vw 500px;
+  position: relative;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#banner pre {
+  margin: 0;
+  padding: 0;
+  font-size: 7rem;
+  font-weight: 700;
+  color: rgb(218, 86, 178);
+  position: relative;
+  z-index: 2;
+}
+
+#banner::before {
+  background-image: url(images/background2.png);
+  width: 100vw;
+  height: 500px;
+  background-size: 100vw 500px;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  /* transition: opacity 0.5s linear; */
+  opacity: 0.15;
+}
 
 li {
   font-size: 100px;
 }
 
 .footer-fixed {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
