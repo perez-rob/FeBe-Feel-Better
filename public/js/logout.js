@@ -6,7 +6,7 @@ const logout =async () => {
         });
       
         if(res.ok){
-            document.location.replace('/profile');
+            document.location.replace('/dashboard');
         }else {
             alert(res.statusText);
         }
