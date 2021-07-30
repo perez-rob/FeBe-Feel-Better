@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feel Better</title>
   <link rel="stylesheet" href="/css/materialize.css">
+  {{!-- <link rel="stylesheet" href="/css/reset.css"> --}}
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -33,12 +34,25 @@
       </div>
     </header>
 
+    {{!-- <header>
+      <h1>
+        <span role="img">💸</span>
+        <a href="/">FeBe - Feel Better</a>
+      </h1>
+      <div>
+        <a href="/dashboard">Dashboard</a>
+        {{#if logged_in}} |
+        <button class="no-button" id="logout">logout</button>
+        {{/if}}
+      </div>
+    </header> --}}
+
     <main class="">
       {{{ body }}}
     </main>
 
     <div class="footer-fixed">
-    <footer class="page-footer blue">
+    <footer class="page-footer blue darken-4">
         
             <div class="footer-copyright">
                 <div class="container">

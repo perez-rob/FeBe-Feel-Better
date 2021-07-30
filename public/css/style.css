@@ -1,23 +1,44 @@
 body {
-  background-image: url(images/background2.png);
   background-color: white;
-  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+body::before {
+    background-image: url(../images/water.jpg);
+    background-size: cover;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  /* transition: opacity 0.5s linear; */
+  opacity: 0.5;
+}
+
+header {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  position:fixed;
+  z-index: 3;
 }
 
 .parallax-container {
-  height: 250px;
+  height: 500px;
   position: relative;
   z-index: 3;
 }
 
 #banner {
-  background-image: url(images/rocks.jpg);
+  background-image: url(../images/bg1.jpg);
   width: 100vw;
   height: 700px;
   background-size: 100vw 700px;
   position: relative;
-  /* top: -60px; */
-  z-index: -1;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +50,7 @@ body {
   padding: 0;
   font-size: 7rem;
   font-weight: 700;
-  color: rgb(218, 86, 178);
+  color: rgb(243, 239, 242);
   position: relative;
   z-index: 2;
 }
@@ -47,21 +68,34 @@ body {
   left: 0;
   z-index: 1;
   /* transition: opacity 0.5s linear; */
-  opacity: 0.15;
+  opacity: 0;
 }
 
-li {
-  font-size: 100px;
+#intro-info p {
+  white-space: pre-wrap;
+  font-size: 24px;
 }
 
-.footer-fixed {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+.input-field input:focus + label {
+  color: red !important;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+  border-bottom: 1px solid red !important;
+  box-shadow: 0 1px 0 0 red !important
+}
+
+.input-field label {
+  color: darkblue !important;
+}
+/* label underline focus color */
+.row .input-field  {
+  border-bottom: 1px solid darkblue !important;
+  box-shadow: 0 1px 0 0 darkblue !important
 }
 
 main {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 #toast-container {
@@ -70,8 +104,8 @@ main {
   right: 50%;
 }
 
+
 .footer-fixed {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+
+  width: 100%;
+}
