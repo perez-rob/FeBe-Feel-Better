@@ -1,10 +1,11 @@
 const User = require("./User");
 const Activity = require("./Activity");
 const Mood = require("./Mood");
+const AUM = require("./AUM");
 
 // User.belongsToMany(Activity, {
 //   through: {
-//     model: UserActivity,
+//     model: AUM,
 //   },
 //   foreignKey: "user_id",
 // });
