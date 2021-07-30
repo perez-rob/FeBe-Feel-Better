@@ -27,7 +27,7 @@ const signUp = async (event) => {
     .value.trim();
 
   if (password !== passwordConfirm) {
-    M.toast({ html: "Passwords must match!" });
+    M.toast({ html: "Passwords must match, try again" });
     return;
   }
 
@@ -40,7 +40,23 @@ const signUp = async (event) => {
     if (res.ok) {
       document.location.replace("/profile");
     } else {
-      alert(res.statusText);
+      const resMsg = await res.json();
+      console.log(resMsg);
+      switch (resMsg.errors[0].message) {
+        case "user.username must be unique":
+          M.toast({ html: "Username taken, choose a different one" });
+          break;
+        case "user.email must be unique":
+          M.toast({
+            html: "Email already in use, try logging in or use a different one",
+          });
+          break;
+        case "Validation len on password failed":
+          M.toast({ html: "Passwords must be at least 8 characters" });
+          break;
+        default:
+          M.toast({ html: "Server error, please try again later" });
+      }
     }
   }
 };
