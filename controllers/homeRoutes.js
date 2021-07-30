@@ -7,6 +7,10 @@ router.get("/", async (req, res) => {
   res.render("loginPage", {});
 });
 
+router.get("/signup", async (req, res) => {
+  res.render("signupPage", {});
+});
+
 router.get("/dashboard", async (req, res) => {
   try {
     const moodData = await Mood.findAll({
