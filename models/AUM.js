@@ -3,6 +3,8 @@ const sequelize = require("../config/connection");
 
 class AUM extends Model {}
 
+// ??? MIGHT NOT NEED date_time HERE ??? //
+
 AUM.init(
   {
     id: {
@@ -13,7 +15,7 @@ AUM.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
         model: "user",
         key: "id",
@@ -21,7 +23,7 @@ AUM.init(
     },
     mood_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
         model: "mood",
         key: "id",
@@ -29,7 +31,7 @@ AUM.init(
     },
     activity_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
         model: "activity",
         key: "id",
@@ -42,7 +44,6 @@ AUM.init(
     },
     result: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
     },
   },
   {
