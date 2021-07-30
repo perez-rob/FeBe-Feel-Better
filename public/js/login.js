@@ -72,6 +72,9 @@ $(document).ready(function(){
   $('.parallax').parallax();
 });
 
+if (document.getElementById("login-form")){
+  document.getElementById("login-form").addEventListener("submit", loginForm);
+} else {
+  document.getElementById("signup-form").addEventListener("submit", signUp);
+}
 
-document.getElementById("login-form").addEventListener("submit", loginForm);
-document.getElementById("signup-form").addEventListener("submit", signUp);

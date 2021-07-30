@@ -56,7 +56,6 @@ header {
 }
 
 #banner::before {
-  background-image: url(images/background2.png);
   width: 100vw;
   height: 700px;
   background-size: 100vw 700px;
