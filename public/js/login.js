@@ -12,14 +12,9 @@ const loginForm = async (event) => {
     if (res.ok) {
       document.location.replace("/dashboard");
     } else {
-<<<<<<< HEAD
-      console.log(res);
-      alert(res.statusText);
-=======
       const resMsg = await res.json();
       console.log('this is', resMsg);
       if(resMsg.message==="Incorrect email/password"){M.toast({ html: "Invalid email or password ! Please try again." });};
->>>>>>> 9b3bfe558d923d69b1dbaf6b566c86ae94aa5101
     }
   }
 };

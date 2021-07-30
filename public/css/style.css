@@ -1,20 +1,27 @@
 body {
-<<<<<<< HEAD
   background-image: url(images/background2.png);
   background-color: white;
   background-size: cover;
 }
 
-#banner {
-  background-image: url(images/collage.png);
-  width: 100vw;
-  height: 500px;
-  background-size: 100vw 500px;
+.parallax-container {
+  height: 250px;
   position: relative;
+  z-index: 3;
+}
+
+#banner {
+  background-image: url(images/rocks.jpg);
+  width: 100vw;
+  height: 700px;
+  background-size: 100vw 700px;
+  position: relative;
+  /* top: -60px; */
   z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 80px;
 }
 
 #banner pre {
@@ -30,8 +37,8 @@ body {
 #banner::before {
   background-image: url(images/background2.png);
   width: 100vw;
-  height: 500px;
-  background-size: 100vw 500px;
+  height: 700px;
+  background-size: 100vw 700px;
   position: absolute;
   content: "";
   top: 0;
@@ -53,13 +60,6 @@ li {
   width: 100%;
 }
 
-=======
-	background-image: url(images/background.png);
-	background-color: white;
-    background-size: cover;
-  }
-
->>>>>>> 9b3bfe558d923d69b1dbaf6b566c86ae94aa5101
 main {
   margin-bottom: 5rem;
 }
