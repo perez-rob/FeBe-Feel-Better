@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Mood extends Model {}
 
@@ -17,7 +17,7 @@ Mood.init(
       unique: true,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },
@@ -26,7 +26,7 @@ Mood.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'mood',
+    modelName: "mood",
   }
 );
 
