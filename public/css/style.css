@@ -89,7 +89,7 @@ header {
   color: darkblue !important;
 }
 /* label underline focus color */
-.row .input-field  {
+.row .input-field input  {
   border-bottom: 1px solid darkblue !important;
   box-shadow: 0 1px 0 0 darkblue !important
 }
@@ -104,6 +104,35 @@ main {
   right: 50%;
 }
 
+.form-box {
+  border: 2px solid darkblue;
+  border-radius: 20px;
+  padding: 0 4rem 2rem 4rem;
+  margin-top: 4rem;
+}
+
+form {
+  margin-bottom: 1.5rem;
+}
+
+form .btn {
+  background-color: darkslateblue;
+}
+
+#then-sign-up {
+  font-size: 1.3rem;
+  color: darkblue;
+  margin-top: 1rem;
+}
+
+#side-pic {
+  background-image: url("../images/jellyfish.jpg");
+  height: 400px;
+  background-size:contain;
+  background-repeat: no-repeat;
+  border-radius: 2000px;
+  margin-top: 4rem ;
+}
 
 .footer-fixed {
 
