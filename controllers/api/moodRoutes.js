@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Mood } = require("../../models");
+const { Mood,Activity } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -16,7 +16,8 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const moodE2 = await Mood.findByPk(req.params.id, {
-       attributes: ["name", "description"] 
+      include:[{ model: Activity, attributes: ['id',"title", "description"] ,
+      }]
     });
     res.status(200).json(moodE2);
   } catch (err) {
