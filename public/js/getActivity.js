@@ -20,4 +20,3 @@ const getActivity = async () => {
   document.getElementById("suggested-activity").appendChild(newActivity);
 };
 
-document.getElementById("get-activity").addEventListener("click", getActivity);
