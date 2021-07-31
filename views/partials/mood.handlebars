@@ -1,10 +1,19 @@
-<div class="input-field col s12">
-  <select class="browser-default">
-    <option value="" disabled selected>Choose your current mood!</option>
-    {{#each moods as |mood|}}
-    {{> moodOptions}}
-    {{/each}}
-  </select>
-</div>  
+ 
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons right">cloud</i>How are you feeling?</a>
 
-
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Select your mood:</h4>
+        <p>
+        {{#each moods as |mood|}}
+          {{> moodOptions}}
+         {{/each}}
+         </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Next</a>
+    </div>
+  </div>
+ 

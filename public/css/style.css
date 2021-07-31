@@ -4,9 +4,13 @@ body {
   z-index: 1;
 }
 
+#temp-spacer {
+  height: 300px;
+}
+
 body::before {
-    background-image: url(../images/water.jpg);
-    background-size: cover;
+  background-image: url(../images/water.jpg);
+  background-size: cover;
   position: absolute;
   content: "";
   top: 0;
@@ -19,10 +23,10 @@ body::before {
 }
 
 header {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  position:fixed;
+  position: fixed;
   z-index: 3;
 }
 
@@ -81,16 +85,16 @@ header {
 /* label underline focus color */
 .row .input-field input:focus {
   border-bottom: 1px solid red !important;
-  box-shadow: 0 1px 0 0 red !important
+  box-shadow: 0 1px 0 0 red !important;
 }
 
 .input-field label {
   color: darkblue !important;
 }
 /* label underline focus color */
-.row .input-field input  {
+.row .input-field input {
   border-bottom: 1px solid darkblue !important;
-  box-shadow: 0 1px 0 0 darkblue !important
+  box-shadow: 0 1px 0 0 darkblue !important;
 }
 
 main {
@@ -127,13 +131,12 @@ form .btn {
 #side-pic {
   background-image: url("../images/jellyfish.jpg");
   height: 400px;
-  background-size:contain;
+  background-size: contain;
   background-repeat: no-repeat;
   border-radius: 2000px;
-  margin-top: 4rem ;
+  margin-top: 4rem;
 }
 
 .footer-fixed {
-
   width: 100%;
 }
