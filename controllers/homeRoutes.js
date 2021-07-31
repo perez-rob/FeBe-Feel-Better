@@ -1,35 +1,44 @@
 const router = require("express").Router();
 const { Mood, User, Activity, AUM } = require("../models");
 const Op = require("sequelize").Op;
-const withAuth = require('../utils/auth') 
+const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
-  res.render("loginPage", {});
+  res.render("loginPage", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/signup", async (req, res) => {
-  res.render("signupPage", {});
+  res.render("signupPage", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/dashboard", async (req, res) => {
   try {
-    const moodData = await Mood.findAll({
-      attributes: ["name", "id"],
-    });
+    if (!req.session.loggedIn) {
+      res.render("loginPage");
+    } else {
+      const moodData = await Mood.findAll({
+        attributes: ["name", "id"],
+      });
 
-    if (!moodData) {
-      res.status(400).json({ message: "ERROR" });
+      const userData = await User.findByPk(req.session.user_id);
+
+      const user = userData.get({ plain: true });
+
+      if (!moodData) {
+        res.status(400).json({ message: "ERROR" });
+      }
+      const moods = await moodData.map((mood) => mood.get({ plain: true }));
+      res.render("dashboard", {
+        moods,
+        user,
+        loggedIn: req.session.loggedIn,
+        userId: req.session.user_id,
+      });
     }
-    const moods = await moodData.map((mood) => mood.get({plain: true}));
-    res.render("dashboard", {moods, 
-      loggedIn: req.session.loggedIn,
-      userId: req.session.user_id,
-    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
-
 });
 
 // *********************  TEST ROUTES FOR DB DEV  ************************ //
