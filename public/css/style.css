@@ -8,6 +8,10 @@ body {
   height: 300px;
 }
 
+.placeholder {
+  height: 400px;
+}
+
 body::before {
   background-image: url(../images/water.jpg);
   background-size: cover;
