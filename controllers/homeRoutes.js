@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Mood, User, Activity, AUM } = require("../models");
 const Op = require("sequelize").Op;
-const withAuth = require("../utils/auth");
+const withAuth = require('../utils/auth') 
 
 router.get("/", async (req, res) => {
   res.render("loginPage", {});
