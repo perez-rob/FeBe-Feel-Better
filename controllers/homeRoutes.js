@@ -1,14 +1,35 @@
 const router = require("express").Router();
 const { Mood, User, Activity, AUM } = require("../models");
 const Op = require("sequelize").Op;
-const withAuth = require("../utils/auth");
+const withAuth = require('../utils/auth') 
 
 router.get("/", async (req, res) => {
   res.render("loginPage", {});
 });
 
+router.get("/signup", async (req, res) => {
+  res.render("signupPage", {});
+});
+
 router.get("/dashboard", async (req, res) => {
-  res.render("dashboard", {});
+  try {
+    const moodData = await Mood.findAll({
+      attributes: ["name", "id"],
+    });
+
+    if (!moodData) {
+      res.status(400).json({ message: "ERROR" });
+    }
+    const moods = await moodData.map((mood) => mood.get({plain: true}));
+    res.render("dashboard", {moods, 
+      loggedIn: req.session.loggedIn,
+      userId: req.session.user_id,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+
 });
 
 // *********************  TEST ROUTES FOR DB DEV  ************************ //
