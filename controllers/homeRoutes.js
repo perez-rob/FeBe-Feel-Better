@@ -41,6 +41,20 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
+router.get("/addActivity", withAuth, async (req, res) => {
+  try {
+    const activityData = await Activity.findAll();
+
+    const activities = await activityData.map((act) =>
+      act.get({ plain: true })
+    );
+
+    res.render("addActivity", { activities, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 // *********************  TEST ROUTES FOR DB DEV  ************************ //
 
 // GETS a user with their activities and moods, this is where you use req.params
@@ -101,6 +115,27 @@ router.get("/test/count/:mood_id/:activity_id", async (req, res) => {
         mood_id: req.params.mood,
         activity_id: req.params.activity,
       },
+    });
+
+    if (!aumData) {
+      res.status(400).json({ message: "ERROR" });
+    }
+
+    res.status(200).json(aumData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+// TEST for by Mood
+router.get("/test/mood/:id", async (req, res) => {
+  try {
+    const aumData = await AUM.findAll({
+      group: "activity_id",
+      where: {
+        mood_id: req.params.id,
+        result: true,
+      },
+      include: [{ model: Activity }],
     });
 
     if (!aumData) {

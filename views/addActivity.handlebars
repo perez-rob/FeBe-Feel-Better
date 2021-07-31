@@ -1,0 +1,45 @@
+<div id="temp-spacer"></div>
+
+<div class="container">
+  <h2>Hello {{user.username}}</h2>
+
+  <div class="row">
+    {{! column form to add activity}}
+    <div class="col s5 form-box">
+      <form id="activity-form" class="form">
+        <div class="input-field">
+          <input
+            class="form-input text-black"
+            type="text"
+            id="activity-name"
+            required
+          />
+          <label for="activity-name" class="text-black">Activity Name</label>
+        </div>
+        <div class="input-field">
+          <textarea
+            class="form-input"
+            id="activity-description"
+            placeholder="Description of activity..."
+            required
+          /></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Add Activity</button>
+        </div>
+      </form>
+    </div>
+
+    {{! column to display activities already in DB }}
+    <div class="col s6 push-s1">
+      <h4>Activities in DB:</h4>
+      <div id="activity-list">
+      {{#each activities as |activity|}}
+      {{> activityList}}
+      {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/addActivity.js"></script>

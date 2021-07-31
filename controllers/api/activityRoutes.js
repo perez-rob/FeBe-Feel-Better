@@ -25,13 +25,10 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// THERE ARE NO PARAMS IN THIS ROUTE, ...req.body should have all the info needed
 router.post("/", async (req, res) => {
   try {
     const postActivity = await Activity.create({
       ...req.body,
-      //   title: req.params.title,
-      //   description: req.params.description,
     });
     res.status(200).json(postActivity);
   } catch (err) {
