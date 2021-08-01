@@ -4,15 +4,74 @@ const Op = require("sequelize").Op;
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
-  }
-  res.render("loginPage", {});
+  res.render("loginPage", { loggedIn: req.session.loggedIn });
+});
+
+router.get("/signup", async (req, res) => {
+  res.render("signupPage", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/dashboard", async (req, res) => {
-  res.render("dashboard", {});
+  try {
+    if (!req.session.loggedIn) {
+      res.render("loginPage");
+    } else {
+      const moodData = await Mood.findAll({
+        attributes: ["name", "id", "description"],
+      });
+      const communityPost = await AUM.findAll({
+        limit: 3,
+        include: [
+          { model: User, attributes: ["username"] },
+          { model: Mood, attributes: ["name"] },
+          { model: Activity, attributes: ["title", "description"] },
+        ],
+      });
+      let userName;
+      if (req.session.loggedIn) {
+        const userPost = await User.findByPk(req.session.user_id, {
+          attributes: ["username"],
+        });
+        userName = userPost.get({ plain: true });
+      }
+
+      const posts = communityPost.map((post) => post.get({ plain: true }));
+      console.log(posts);
+      const userData = await User.findByPk(req.session.user_id);
+
+      const user = userData.get({ plain: true });
+
+      if (!moodData) {
+        res.status(400).json({ message: "ERROR" });
+      }
+      const moods = await moodData.map((mood) => mood.get({ plain: true }));
+      res.render("dashboard", {
+        moods,
+        user,
+        loggedIn: req.session.loggedIn,
+        userId: req.session.user_id,
+        userName,
+        posts,
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/addActivity", withAuth, async (req, res) => {
+  try {
+    const activityData = await Activity.findAll();
+
+    const activities = await activityData.map((act) =>
+      act.get({ plain: true })
+    );
+
+    res.render("addActivity", { activities, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // *********************  TEST ROUTES FOR DB DEV  ************************ //
@@ -68,7 +127,7 @@ router.get("/test/mood/activity", async (req, res) => {
 });
 
 // GETS the number of times a certain activity was beneficial for a certain mood
-router.get("/test/count/:mood/:activity", async (req, res) => {
+router.get("/test/count/:mood_id/:activity_id", async (req, res) => {
   try {
     const aumData = await AUM.sum("result", {
       where: {
@@ -86,6 +145,48 @@ router.get("/test/count/:mood/:activity", async (req, res) => {
     res.status(500).json(err);
   }
 });
+// TEST for by Mood
+router.get("/test/mood/:id", async (req, res) => {
+  try {
+    const aumData = await AUM.findAll({
+      group: "activity_id",
+      where: {
+        mood_id: req.params.id,
+        result: true,
+      },
+      include: [{ model: Activity }],
+    });
+
+    if (!aumData) {
+      res.status(400).json({ message: "ERROR" });
+    }
+
+    res.status(200).json(aumData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// router.get("/test/mood/:id", async (req, res) => {
+//   try {
+//     const aumData = await AUM.findAll({
+//       group: "activity_id",
+//       where: {
+//         mood_id: req.params.id,
+//         result: true,
+//       },
+//       include: [{ model: Activity }],
+//     });
+
+//     if (!aumData) {
+//       res.status(400).json({ message: "ERROR" });
+//     }
+
+//     res.status(200).json(aumData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // *********************  END TEST ROUTES  ************************ //
 

@@ -1,25 +1,177 @@
 body {
+<<<<<<< HEAD
 	background-image: url(images/background.png);
 	background-color: white;
 	background-size: cover;
   }
+=======
+  background-color: white;
+  position: relative;
+  z-index: 1;
+}
+>>>>>>> 5e3bd0e43c3400ffe6c3af4a308c5938a37439f1
 
-li {
-  font-size: 100px;
+#temp-spacer {
+  height: 100px;
 }
 
-.footer-fixed {
-  position: sticky;
+.placeholder {
+  height: 400px;
+}
+
+.placeholder {
+  height: 400px;
+}
+
+body::before {
+  background-image: url(../images/water.jpg);
+  background-size: cover;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  z-index: -1;
+  /* transition: opacity 0.5s linear; */
+  opacity: 0.5;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 3;
+}
+
+.parallax-container {
+  height: 500px;
+  position: relative;
+  z-index: 3;
+}
+
+#banner {
+  background-image: url(../images/bg1.jpg);
+  width: 100vw;
+  height: 700px;
+  background-size: 100vw 700px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+#banner pre {
+  margin: 0;
+  padding: 0;
+  font-size: 7rem;
+  font-weight: 700;
+  color: rgb(243, 239, 242);
+  position: relative;
+  z-index: 2;
+}
+
+#banner::before {
+  width: 100vw;
+  height: 700px;
+  background-size: 100vw 700px;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  /* transition: opacity 0.5s linear; */
+  opacity: 0;
+}
+
+#intro-info p {
+  white-space: pre-wrap;
+  font-size: 24px;
+}
+
+.input-field input:focus + label {
+  color: blue !important;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+  border-bottom: 1px solid blue !important;
+  box-shadow: 0 1px 0 0 blue !important;
+}
+
+.input-field label {
+  color: darkblue !important;
+}
+/* label underline focus color */
+.row .input-field input {
+  border-bottom: 1px solid darkblue !important;
+  box-shadow: 0 1px 0 0 darkblue !important;
+}
+
+.input-field textarea:focus + label {
+  color: blue !important;
+}
+/* label underline focus color */
+.row .input-field textarea:focus {
+  border-bottom: 1px solid blue !important;
+  box-shadow: 0 1px 0 0 blue !important;
+}
+
+/* label underline focus color */
+.row .input-field textarea {
+  border-bottom: 1px solid darkblue !important;
+  box-shadow: 0 1px 0 0 darkblue !important;
 }
 
 main {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 #toast-container {
   min-width: 8%;
   top: 50%;
   right: 50%;
+}
+
+.form-box {
+  border: 2px solid darkblue;
+  border-radius: 20px;
+  padding: 0 4rem 2rem 4rem;
+  margin-top: 4rem;
+}
+
+form {
+  margin-bottom: 1.5rem;
+}
+
+form .btn {
+  background-color: darkslateblue;
+}
+
+#then-sign-up {
+  font-size: 1.3rem;
+  color: darkblue;
+  margin-top: 1rem;
+}
+
+#side-pic {
+  background-image: url("../images/jellyfish.jpg");
+  height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 2000px;
+  margin-top: 4rem;
+}
+
+#activity-list {
+  max-height: 75vh;
+  overflow-y: scroll;
+}
+
+.footer-fixed {
+  width: 100%;
 }

@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feel Better</title>
   <link rel="stylesheet" href="/css/materialize.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  {{!-- <link rel="stylesheet" href="/css/reset.css"> --}}
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -14,17 +16,18 @@
     
     <header class="display-flex justify-space-between align-center p-2">
       <div class="navbar-fixed">
-        <nav>
+        <nav class="transparent">
             
-            <div class="nav-wrapper light-blue">
+            <div class="nav-wrapper transparent">
             
-            <a href="#" class="brand-logo left">FeBe - Feel Better</a>
+            <a href="/" class="brand-logo left">FeBe - Feel Better</a>
                     <ul id="nav-mobile" class="right">
-                <li><a href="#">Home</a></li>
+                <li><a href="/dashboard" >Dashboard</a></li>
                 <li><a href="#">Activities</a></li>
-                <li><a href="#">Placeholder?</a></li>
-                {{#if logged_in}}
-                <li><button class="btn" id="logout">logout</button></li>
+                {{#if loggedIn}}
+                <li><a  id="logout">Logout</a></li>
+                {{else}}
+                <li><a  id="login" href="#login-form">Login</a></li>
                 {{/if}}
             </ul>
             </h2>
@@ -33,12 +36,25 @@
       </div>
     </header>
 
-    <main class="container container-fluid mt-5">
+    {{!-- <header>
+      <h1>
+        <span role="img">💸</span>
+        <a href="/">FeBe - Feel Better</a>
+      </h1>
+      <div>
+        <a href="/dashboard">Dashboard</a>
+        {{#if logged_in}} |
+        <button class="no-button" id="logout">logout</button>
+        {{/if}}
+      </div>
+    </header> --}}
+
+    <main class="">
       {{{ body }}}
     </main>
 
     <div class="footer-fixed">
-    <footer class="page-footer blue">
+    <footer class="page-footer blue darken-4">
         
             <div class="footer-copyright">
                 <div class="container">
@@ -54,7 +70,10 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/js/materialize.min.js"></script>
-  {{#if logged_in}}
+ <script src ='/js/main.js'></script>
+ <script src= '/js/modal.js'></script>
+ <script src='/js/hover.js'></script>
+  {{#if loggedIn}}
   {{!-- PH for logout script to be added in public files --}}
   <script src="/js/logout.js"></script>
   {{/if}}

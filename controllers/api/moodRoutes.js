@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Mood } = require("../../models");
+const { Mood, Activity, AUM, User } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -13,28 +13,58 @@ router.get("/", async (req, res) => {
 });
 
 // include is for other models, for selecting specific columns just use attributes like above
-router.get("/:id", async (req, res) => {
+// router.get("/:id", async (req, res) => {
+//   try {
+//     const moodE2 = await Mood.findByPk(req.params.id, {
+//       include: [
+//         { model: Activity, attributes: ["id", "title", "description"] },
+//       ],
+//     });
+//     res.status(200).json(moodE2);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+router.post("/", async (req, res) => {
   try {
-    const moodE2 = await Mood.findByPk(req.params.id, {
-      include: [{ attributes: ["name", "description"] }],
+    const postMood = await Mood.create({
+      ...req.body,
     });
-    res.status(200).json(moodE2);
+    res.status(200).json(postMood);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+router.put("/:id", async (req, res) => {
+  try {
+    const updateMood = await Mood.update(
+      {
+        name: req.body.name,
+        description: req.body.description,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.status(200).json(updateMood);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// req.params is usally only used for UPDATE or DELETE requests where we need to target a specific instance, POST does not need them, the data we want is all in req.body
-router.post("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
-    const postMood = await Mood.create({
-      ...req.body,
-      //   name: req.params.name,
-      //   description: req.params.description,
+    const deleteMood = await Mood.destroy({
+      where: {
+        id: req.params.id,
+      },
     });
-    res.status(200).json(postMood);
+    res.status(200).json(deleteMood);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 

@@ -29,7 +29,6 @@ Mood.hasMany(AUM, {
 AUM.belongsTo(Mood, {
   foreignKey: "mood_id",
 });
-
 module.exports = {
   User,
   Activity,

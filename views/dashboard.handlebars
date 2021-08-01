@@ -1,36 +1,65 @@
-<body>
-
-    <div class="container">
+    
+    <div id="temp-spacer"></div>
+    
+    <div id="dash-container" data-user='{{userId}}' class="container">
+        <h2>Hello {{user.username}}</h2>
 
         <div class="row">
+            {{!-- column for chat and community board --}}
+            <div class="col s6">
+                <div class="row">
+                    <div class="placeholder">
+                        <h4>Our Community:</h4>
+    
+                    
+                        {{#each posts as |post|}}
+                        {{> community}}
+                        {{/each}}
 
-        <div class="col">
-            <div class="card">
-                <div class="mood">
+                        
+                       
+                   
+                    </div>
+ 
+
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+
+                    {{> chat username=user.username}}
+
+
                 </div>
             </div>
-            <div class="card">
-                <div class="mood">
+
+            {{!-- column for mood and activity stuff --}}
+            <div class="col s6">
+                <div>
+                    <h3>What yo mood!?</h3>
+                    <div>
+                        {{> mood moods=moods}}
+                    </div>
+                </div>
+                <div>
+                    <h3>Suggested Activity</h3>
+                <div id="suggested-activity">
+                    <button id="get-activity" class="waves-effect waves-light btn">Get Activity</button>
+                </div>
+
+
+                    <button id="add-activity" class="waves-effect waves-light btn" onclick="document.location.assign('/addActivity')">Add New Activity</button>
+
                 </div>
             </div>
         </div>
-
-        <div class="col">
-            <div class="card">
-                <div class="mood">
-                </div>
-            </div>
-            <div class="card">
-                <div class="mood">
-                </div>
-            </div>
-        </div>
-
-
-
-        </div>
-
     </div>
 
-</body>
+    <script src="/js/getActivity.js"></script>
+    
+
 
