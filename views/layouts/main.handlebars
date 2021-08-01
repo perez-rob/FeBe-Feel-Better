@@ -25,7 +25,9 @@
                 <li><a href="/dashboard" >Dashboard</a></li>
                 <li><a href="#">Activities</a></li>
                 {{#if loggedIn}}
-                <li><button class="btn" id="logout">logout</button></li>
+                <li><a  id="logout">Logout</a></li>
+                {{else}}
+                <li><a  id="login" href="#login-form">Login</a></li>
                 {{/if}}
             </ul>
             </h2>
