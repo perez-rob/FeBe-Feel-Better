@@ -17,7 +17,7 @@ router.get("/dashboard", async (req, res) => {
       res.render("loginPage");
     } else {
       const moodData = await Mood.findAll({
-        attributes: ["name", "id"],
+        attributes: ["name", "id", "description"],
       });
 
       const userData = await User.findByPk(req.session.user_id);
