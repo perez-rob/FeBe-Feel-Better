@@ -1,7 +1,3 @@
-const userId = document
-  .getElementById("dash-container")
-  .getAttribute("data-user");
-
 const getActivity = async (event) => {
   console.log("MAIN");
   const id = event.target.getAttribute("data-id");
@@ -33,6 +29,10 @@ const getActivity = async (event) => {
 
 const getActivityRand = async (event) => {
   console.log("RANDOM");
+  const userId = document
+    .getElementById("dash-container")
+    .getAttribute("data-user");
+  console.log(userId);
   const id = event.target.getAttribute("data-id");
   // console.log(id);
   const res = await fetch(`api/aum/activityExUser/${id}/${userId}`, {
@@ -47,7 +47,7 @@ const getActivityRand = async (event) => {
     randNumLen = Math.floor(Math.random() * activity.length);
     console.log(randNumLen);
     console.log("RANDOM", activity);
-    console.log("RANDOM", activity[randNumLen].activity.title);
+    console.log("RANDOM", activity[randNumLen].title);
     const instance = M.Modal.getInstance(document.getElementById("modal1"));
     instance.close();
   } else {
