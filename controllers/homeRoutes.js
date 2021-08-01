@@ -4,32 +4,55 @@ const Op = require("sequelize").Op;
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
-  res.render("loginPage", {});
+  res.render("loginPage", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/signup", async (req, res) => {
-  res.render("signupPage", {});
+  res.render("signupPage", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/dashboard", async (req, res) => {
   try {
-    const moodData = await Mood.findAll({
-      attributes: ["name", "id"],
-    });
+    if (!req.session.loggedIn) {
+      res.render("loginPage");
+    } else {
+      const moodData = await Mood.findAll({
+        attributes: ["name", "id", "description"],
+      });
 
-    if (!moodData) {
-      res.status(400).json({ message: "ERROR" });
+      const userData = await User.findByPk(req.session.user_id);
+
+      const user = userData.get({ plain: true });
+
+      if (!moodData) {
+        res.status(400).json({ message: "ERROR" });
+      }
+      const moods = await moodData.map((mood) => mood.get({ plain: true }));
+      res.render("dashboard", {
+        moods,
+        user,
+        loggedIn: req.session.loggedIn,
+        userId: req.session.user_id,
+      });
     }
-    const moods = await moodData.map((mood) => mood.get({plain: true}));
-    res.render("dashboard", {moods, 
-      loggedIn: req.session.loggedIn,
-      userId: req.session.user_id,
-    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
+});
 
+router.get("/addActivity", withAuth, async (req, res) => {
+  try {
+    const activityData = await Activity.findAll();
+
+    const activities = await activityData.map((act) =>
+      act.get({ plain: true })
+    );
+
+    res.render("addActivity", { activities, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // *********************  TEST ROUTES FOR DB DEV  ************************ //
@@ -103,6 +126,48 @@ router.get("/test/count/:mood_id/:activity_id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+// TEST for by Mood
+router.get("/test/mood/:id", async (req, res) => {
+  try {
+    const aumData = await AUM.findAll({
+      group: "activity_id",
+      where: {
+        mood_id: req.params.id,
+        result: true,
+      },
+      include: [{ model: Activity }],
+    });
+
+    if (!aumData) {
+      res.status(400).json({ message: "ERROR" });
+    }
+
+    res.status(200).json(aumData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// router.get("/test/mood/:id", async (req, res) => {
+//   try {
+//     const aumData = await AUM.findAll({
+//       group: "activity_id",
+//       where: {
+//         mood_id: req.params.id,
+//         result: true,
+//       },
+//       include: [{ model: Activity }],
+//     });
+
+//     if (!aumData) {
+//       res.status(400).json({ message: "ERROR" });
+//     }
+
+//     res.status(200).json(aumData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // *********************  END TEST ROUTES  ************************ //
 
