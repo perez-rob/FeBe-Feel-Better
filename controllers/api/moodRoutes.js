@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Mood,Activity,AUM,User } = require("../../models");
+const { Mood, Activity, AUM, User } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -16,80 +16,56 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const moodE2 = await Mood.findByPk(req.params.id, {
-      include:[{ model: Activity, attributes: ['id',"title", "description"] ,
-      }]
+      include: [
+        { model: Activity, attributes: ["id", "title", "description"] },
+      ],
     });
     res.status(200).json(moodE2);
   } catch (err) {
-    res.status(500).json(err); 
+    res.status(500).json(err);
   }
 });
 
-// req.params is usally only used for UPDATE or DELETE requests where we need to target a specific instance, POST does not need them, the data we want is all in req.body
 router.post("/", async (req, res) => {
   try {
     const postMood = await Mood.create({
       ...req.body,
-      //   name: req.params.name,
-      //   description: req.params.description,
     });
     res.status(200).json(postMood);
   } catch (err) {
     res.status(400).json(err);
   }
 });
-router.put('/:id', async (req,res)=>{
-  try{
-    const updateMood = await Mood.update ({
-      name:req.body.name,
-      description:req.body.description,
-    },
-    {
-      where:{
-        id:req.params.id,
+router.put("/:id", async (req, res) => {
+  try {
+    const updateMood = await Mood.update(
+      {
+        name: req.body.name,
+        description: req.body.description,
       },
-    }
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
     );
     res.status(200).json(updateMood);
-  }
-  catch(err) {res.status(500).json(err)}; 
-} );
-
-router.delete('/:id', async (req,res)=> 
-{
-  try{
-    const deleteMood= await Mood.destroy({
-      where:{
-        id:req.params.id,
-      },
-    });
-    res.status(200).json(deleteMood);
-  }
-  catch(err){
-    res.status(500).json(err);
-  }
-});
-
-router.get("/test/:id", async (req, res) => {
-  try {
-    const aumData = await AUM.findAll({
-      group: "activity_id",
-      where: {
-        mood_id: req.params.id,
-        result: true,
-      },
-      include: [{ model: Activity }],
-    });
-
-    if (!aumData) {
-      res.status(400).json({ message: "ERROR" });
-    }
-
-    res.status(200).json(aumData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const deleteMood = await Mood.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(deleteMood);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
