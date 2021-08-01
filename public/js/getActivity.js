@@ -61,8 +61,8 @@ const getActivityRand = async (event) => {
 };
 
 const shuffleFunctions = (event) => {
-  const randSelect = Math.floor(Math.random() * 10);
-  if (randSelect === 5) {
+  const randSelect = Math.floor(Math.random() * 5);
+  if (randSelect === 3) {
     getActivityRand(event);
     return;
   } else {

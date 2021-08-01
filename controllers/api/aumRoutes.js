@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Mood, Activity, AUM, User } = require("../../models");
+const Op = require("sequelize").Op;
 
 router.get("/activityByMood/:id", async (req, res) => {
   try {
@@ -46,10 +47,41 @@ router.get("/activityExUser/", async (req, res) => {
   }
 });
 
+// const aumData = await Activity.findAll({
+//   include: [
+//     {
+//       model: AUM,
+//       where: {
+//         [Op.and]: [
+//           { mood_id: req.params.mood },
+//           {
+//             [Op.not]: [
+//               {
+//                 [Op.and]: [{ user_id: req.params.user }, { result: false }],
+//               },
+//             ],
+//           },
+//         ],
+//       },
+//     },
+//   ],
+// });
+
 router.get("/activityExUser/:mood/:user", async (req, res) => {
   try {
     const aumData = await Activity.findAll({
-      include: [{ model: AUM, where: {} }],
+      include: [
+        {
+          model: AUM,
+          where: {
+            [Op.not]: [
+              {
+                mood_id: req.params.mood,
+              },
+            ],
+          },
+        },
+      ],
     });
 
     if (!aumData) {
