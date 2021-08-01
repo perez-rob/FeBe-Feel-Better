@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/css/chatStyle.css" />
+<script src="http://localhost:3001/socket.io/socket.io.js"></script>
+{{! <script
+  src="https://salty-journey-18007.herokuapp.com/socket.io/socket.io.js"
+></script> }}
+
+<div id="chat-box">
+  <div id="message-container" data-user="{{username}}"></div>
+  <form id="send-container">
+    <textarea id="message-input"></textarea>
+    <button type="submit" id="send-button">Send</button>
+  </form>
+</div>
+
+<script src="/js/forChat.js"></script>
