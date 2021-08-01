@@ -39,8 +39,6 @@ router.get("/dashboard", async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
-<<<<<<< HEAD
-=======
 });
 
 router.get("/addActivity", withAuth, async (req, res) => {
@@ -55,7 +53,6 @@ router.get("/addActivity", withAuth, async (req, res) => {
   } catch (err) {
     console.log(err);
   }
->>>>>>> f57add77dc075c1c204252385ac28b440d4754d2
 });
 
 // *********************  TEST ROUTES FOR DB DEV  ************************ //
@@ -171,7 +168,6 @@ router.get("/test/mood/:id", async (req, res) => {
 //     res.status(500).json(err);
 //   }
 // });
-
 
 // *********************  END TEST ROUTES  ************************ //
 
