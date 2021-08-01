@@ -5,7 +5,11 @@ body {
 }
 
 #temp-spacer {
-  height: 300px;
+  height: 100px;
+}
+
+.placeholder {
+  height: 400px;
 }
 
 .placeholder {
@@ -84,12 +88,12 @@ header {
 }
 
 .input-field input:focus + label {
-  color: red !important;
+  color: blue !important;
 }
 /* label underline focus color */
 .row .input-field input:focus {
-  border-bottom: 1px solid red !important;
-  box-shadow: 0 1px 0 0 red !important;
+  border-bottom: 1px solid blue !important;
+  box-shadow: 0 1px 0 0 blue !important;
 }
 
 .input-field label {
@@ -97,6 +101,21 @@ header {
 }
 /* label underline focus color */
 .row .input-field input {
+  border-bottom: 1px solid darkblue !important;
+  box-shadow: 0 1px 0 0 darkblue !important;
+}
+
+.input-field textarea:focus + label {
+  color: blue !important;
+}
+/* label underline focus color */
+.row .input-field textarea:focus {
+  border-bottom: 1px solid blue !important;
+  box-shadow: 0 1px 0 0 blue !important;
+}
+
+/* label underline focus color */
+.row .input-field textarea {
   border-bottom: 1px solid darkblue !important;
   box-shadow: 0 1px 0 0 darkblue !important;
 }
@@ -139,6 +158,11 @@ form .btn {
   background-repeat: no-repeat;
   border-radius: 2000px;
   margin-top: 4rem;
+}
+
+#activity-list {
+  max-height: 75vh;
+  overflow-y: scroll;
 }
 
 .footer-fixed {
