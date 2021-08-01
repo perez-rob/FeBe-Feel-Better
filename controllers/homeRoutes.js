@@ -19,7 +19,24 @@ router.get("/dashboard", async (req, res) => {
       const moodData = await Mood.findAll({
         attributes: ["name", "id", "description"],
       });
+      const communityPost = await AUM.findAll({
+        limit: 3,
+        include: [
+          { model: User, attributes: ["username"] },
+          { model: Mood, attributes: ["name"] },
+          { model: Activity, attributes: ["title", "description"] },
+        ],
+      });
+      let userName;
+      if (req.session.loggedIn) {
+        const userPost = await User.findByPk(req.session.user_id, {
+          attributes: ["username"],
+        });
+        userName = userPost.get({ plain: true });
+      }
 
+      const posts = communityPost.map((post) => post.get({ plain: true }));
+      console.log(posts);
       const userData = await User.findByPk(req.session.user_id);
 
       const user = userData.get({ plain: true });
@@ -33,6 +50,8 @@ router.get("/dashboard", async (req, res) => {
         user,
         loggedIn: req.session.loggedIn,
         userId: req.session.user_id,
+        userName,
+        posts,
       });
     }
   } catch (err) {
