@@ -39,6 +39,8 @@ router.get("/dashboard", async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+<<<<<<< HEAD
+=======
 });
 
 router.get("/addActivity", withAuth, async (req, res) => {
@@ -53,6 +55,7 @@ router.get("/addActivity", withAuth, async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+>>>>>>> f57add77dc075c1c204252385ac28b440d4754d2
 });
 
 // *********************  TEST ROUTES FOR DB DEV  ************************ //
@@ -147,6 +150,28 @@ router.get("/test/mood/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.get("/test/mood/:id", async (req, res) => {
+//   try {
+//     const aumData = await AUM.findAll({
+//       group: "activity_id",
+//       where: {
+//         mood_id: req.params.id,
+//         result: true,
+//       },
+//       include: [{ model: Activity }],
+//     });
+
+//     if (!aumData) {
+//       res.status(400).json({ message: "ERROR" });
+//     }
+
+//     res.status(200).json(aumData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 
 // *********************  END TEST ROUTES  ************************ //
 

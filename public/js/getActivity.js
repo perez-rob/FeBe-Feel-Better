@@ -1,7 +1,7 @@
-const getActivity = async () => {
-  const randomNum = Math.floor(Math.random() * (10 - 1) + 1);
-
-  const res = await fetch(`/api/activity/${randomNum}`, {
+const getActivity = async (event) => {
+  const id = event.target.getAttribute('data-id');
+console.log(id);
+  const res = await fetch(`api/mood/test/${id}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
@@ -9,15 +9,17 @@ const getActivity = async () => {
   let activity;
   if (res.ok) {
     activity = await res.json();
-    console.log(activity);
+    console.log("this is",activity);
+    console.log("this is",activity[0].activity.title);
   } else {
     console.log("FETCH FAILED");
   }
 
   const newActivity = document.createElement("div");
-  newActivity.innerText = activity.title;
+  newActivity.innerText = activity[0].activity.title;
 
-  document.getElementById("suggested-activity").appendChild(newActivity);
+  document.getElementById("modal1").appendChild(newActivity);
 };
 
-document.getElementById("get-activity").addEventListener("click", getActivity);
+document.querySelectorAll(".moodbtn").forEach((btn)=> {btn.addEventListener("click", getActivity); })
+
