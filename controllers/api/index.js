@@ -7,6 +7,6 @@ const aumRoutes = require("./aumRoutes");
 router.use("/activity", activityRoutes);
 router.use("/mood", moodRoutes);
 router.use("/user", userRoutes);
-router.user("/aum", aumRoutes);
+router.use("/aum", aumRoutes);
 
 module.exports = router;
