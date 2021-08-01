@@ -52,13 +52,12 @@ router.get("/activityExUser/", async (req, res) => {
 //     {
 //       model: AUM,
 //       where: {
-//         [Op.and]: [
-//           { mood_id: req.params.mood },
+//         [Op.not]: [
 //           {
-//             [Op.not]: [
-//               {
-//                 [Op.and]: [{ user_id: req.params.user }, { result: false }],
-//               },
+//             [Op.and]: [
+//               { mood_id: req.params.mood },
+//               { user_id: req.params.user },
+//               { result: false },
 //             ],
 //           },
 //         ],
@@ -76,7 +75,11 @@ router.get("/activityExUser/:mood/:user", async (req, res) => {
           where: {
             [Op.not]: [
               {
-                mood_id: req.params.mood,
+                [Op.and]: [
+                  { mood_id: req.params.mood },
+                  { user_id: req.params.user },
+                  { result: false },
+                ],
               },
             ],
           },
