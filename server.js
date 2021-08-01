@@ -48,11 +48,7 @@ sequelize.sync({ force: false }).then(() => {
   let userName;
 
   io.on("connection", (socket) => {
-    console.log("New connection 1 from " + socket.handshake.address);
-
     socket.on("new-user", (userName) => {
-      console.log("New connection 2 from " + socket.handshake.address);
-
       users[socket.id] = userName;
       socket.broadcast.emit("user-connected", userName);
     });
