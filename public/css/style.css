@@ -439,3 +439,7 @@ footer {
 .add-act-text {
   font-weight: bold;
 }
+
+#intro-info p {
+  margin: 0 20px 50px;
+}
