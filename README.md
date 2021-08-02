@@ -23,23 +23,23 @@ FeBe is an application that allows the user a unique experience in handling spec
 ### Screenshots of Project/Functions
 
 This the entire homepage:
-![](public\images\hompage.gif)
+![hello](public\images\hompage.gif)
 
 Mood/Act. selection feature:
-![](public\images\updatedmoodact.gif)
+![hello](public\images\updatedmoodact.gif)
 
 Adding Act. feature/Showing alert that same activites cannot be added again:
-![](public\images\updatedact.gif)
+![hello](public\images\updatedact.gif)
 
 Chat box:
 
-![](public\images\chat.gif)
+![hello](public\images\chat.gif)
 
 Community Post: Allows user to see other user's post
-![](public\images\Community.png)
+![hello](public\images\Community.png)
 
 Error message for when user does not have an account or enter wrong info:
-![](public\images\error.png)
+![hello](public\images\error.png)
 
 ### Links
 
