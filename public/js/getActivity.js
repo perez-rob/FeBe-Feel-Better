@@ -1,3 +1,5 @@
+let backupMoodId;
+
 const processStoredAum = async (storedAum) => {
   const resMood = await fetch(`/api/mood/${storedAum.mood_id}`);
   if (resMood.ok) {
@@ -109,9 +111,13 @@ if (storedAum !== null) {
 }
 
 const addToAUM = async (moodId, activityId) => {
+  if (moodId === null) {
+    moodId = backupMoodId;
+  }
   const userId = document
     .getElementById("dash-container")
     .getAttribute("data-user");
+
   const res = await fetch("/api/aum", {
     method: "POST",
     body: JSON.stringify({
@@ -132,6 +138,7 @@ const addToAUM = async (moodId, activityId) => {
 };
 
 const getActivityRand = async (event) => {
+  backupMoodId = event.target.getAttribute("data-id");
   console.log("RANDOM");
   const userId = document
     .getElementById("dash-container")
@@ -204,6 +211,7 @@ const getActivityRand = async (event) => {
 };
 
 const getActivity = async (event) => {
+  backupMoodId = event.target.getAttribute("data-id");
   console.log("MAIN");
   const userId = document
     .getElementById("dash-container")
