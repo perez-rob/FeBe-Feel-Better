@@ -4,14 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FeBe - Feel Better</title>
+  <title>Feel Better</title>
   <link rel="stylesheet" href="/css/materialize.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Shadows+Into+Light&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/icon?family=shadows_into_light|Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  {{!-- <link rel="stylesheet" href="/css/reset.css"> --}}
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="icon" type="image/png" href="/images/FeBe_Logo.jpg">
 </head>
 
 <body>
@@ -20,16 +18,15 @@
     <header class="display-flex justify-space-between align-center p-2">
       <div class="navbar-fixed">
         <nav class="transparent">
-<<<<<<< HEAD
             <nav class="nav-wrapper transparent">
               <div class="container">
-                <a href="#" class="brand-logo">FeBe</a>
+                <a href="/" class="brand-logo">FeBe - Feel Better</a>
                 <a href="#" class="sidenav-trigger" data-target="mobile-links">
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="#">Activities</a></li>
+                    <li><a href="/addActivity">Activities</a></li>
                     {{#if logged_in}}
                     <li><a id="logout">Logout</a></li>
                     <li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
@@ -37,7 +34,7 @@
                     </a></li>
                     {{else}}
                     <li><a href="#">Login</a></li>
-                    <li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
+                    <li><a href="#login-form" class="btn-floating indigo darken-4 z-depth-0">
                         <i class="material-icons">login</i>
                     </a></li>
                     {{/if}}
@@ -46,51 +43,40 @@
         </nav>
 
         <ul class="sidenav indigo" id="mobile-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Activities</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/addActivity">Activities</a></li>
             {{#if loggedIn}}
             <li><a  id="logout">Logout</a></li>
             {{else}}
             <li><a  id="login" href="#login-form">Login</a></li>
             {{/if}}
         </ul>
-=======
             
-            <div class="nav-wrapper transparent">
+            {{!-- <div class="nav-wrapper transparent">
             
-            <a href="/" class="brand-logo left">FeBe - Feel Better</a>
-                    <ul id="nav-mobile" class="right">
-                <li><a href="/dashboard" >Dashboard</a></li>
+            <a href="/" class="brand-logo left"><img src="/images/mainLogoWhite.png" alt="FeBe"><em> Feel Better</em></a>
+              <ul id="nav-mobile" class="right">
+                <li>
+                  <a href="/dashboard" >Dashboard</a>
+                </li>
+                <li>
+                  <a href="/addActivity">Activities</a>
+                </li>
                 {{#if loggedIn}}
-                <li><a href="/addActivity">Activities</a></li>
+                <li>
+                  <a  id="logout">Logout</a>
+                </li>
                 {{else}}
-                <li><a href="/contact-us">About</a></li>
-                {{/if}}
-                {{#if loggedIn}}
-                <li><a  id="logout">Logout</a></li>
-                {{else}}
-                <li><a  id="login" href="/#login-form">Login</a></li>
+                <li>
+                  <a  id="login" href="#login-form">Login</a>
+                </li>
                 {{/if}}
             </ul>
-            </h2>
-            </div>
->>>>>>> 8ccd826f74bf9c05b4c51a8f667e0a6ec0ea1519
+           </div> --}}
         </nav>
       </div>
     </header>
 
-    {{!-- <header>
-      <h1>
-        <span role="img">💸</span>
-        <a href="/">FeBe - Feel Better</a>
-      </h1>
-      <div>
-        <a href="/dashboard">Dashboard</a>
-        {{#if logged_in}} |
-        <button class="no-button" id="logout">logout</button>
-        {{/if}}
-      </div>
-    </header> --}}
 
     <main class="">
       {{{ body }}}
@@ -101,8 +87,8 @@
         
             <div class="footer-copyright">
                 <div class="container">
-                    © 2021 FeBe Group
-                    <a class="grey-text text-lighten-4 right" href="/contact-us">About the Team</a>
+                    © 2021 TBD
+                    <a class="grey-text text-lighten-4 right" href="#">About the Team</a>
                 </div>
             </div>
         
@@ -111,6 +97,7 @@
   </div>
 
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/js/materialize.min.js"></script>
  <script src ='/js/main.js'></script>
