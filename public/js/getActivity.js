@@ -1,8 +1,11 @@
 const getActivity = async (event) => {
   console.log("MAIN");
+  const userId = document
+    .getElementById("dash-container")
+    .getAttribute("data-user");
   const id = event.target.getAttribute("data-id");
   // console.log(id);
-  const res = await fetch(`api/aum/activityByMood/${id}`, {
+  const res = await fetch(`api/aum/activityByMood/${id}/${userId}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
@@ -67,7 +70,7 @@ const getActivityRand = async (event) => {
 };
 
 const shuffleFunctions = (event) => {
-  const randSelect = Math.floor(Math.random() * 4);
+  const randSelect = Math.floor(Math.random() * 5);
   if (randSelect === 3) {
     getActivityRand(event);
     return;

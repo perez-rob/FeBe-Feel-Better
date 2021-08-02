@@ -64,5 +64,11 @@
     "mood_id": 2,
     "activity_id": 9,
     "result": true
+  },
+  {
+    "user_id": 3,
+    "mood_id": 1,
+    "activity_id": 13,
+    "result": true
   }
 ]
