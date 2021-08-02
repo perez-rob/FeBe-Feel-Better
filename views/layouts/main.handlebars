@@ -18,28 +18,37 @@
       <div class="navbar-fixed">
         <nav class="transparent">
             <nav class="nav-wrapper transparent">
-            <div class="container">
+              <div class="container">
                 <a href="#" class="brand-logo">FeBe</a>
                 <a href="#" class="sidenav-trigger" data-target="mobile-links">
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="#">Activities</a></li>
-                    <li><a href="#">Login</a></li>
                     {{#if logged_in}}
+                    <li><a id="logout">Logout</a></li>
                     <li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
-                        <i class="material-icons">face</i>
+                        <i class="material-icons">logout</i>
+                    </a></li>
+                    {{else}}
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
+                        <i class="material-icons">login</i>
                     </a></li>
                     {{/if}}
                 </ul>
-            </div> 
+              </div> 
         </nav>
 
         <ul class="sidenav indigo" id="mobile-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Activities</a></li>
-            <li><a href="#">Login</a></li>
+            {{#if loggedIn}}
+            <li><a  id="logout">Logout</a></li>
+            {{else}}
+            <li><a  id="login" href="#login-form">Login</a></li>
+            {{/if}}
         </ul>
         </nav>
       </div>
@@ -86,6 +95,11 @@
   {{!-- PH for logout script to be added in public files --}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        })
+    </script>
 </body>
 
 </html>
