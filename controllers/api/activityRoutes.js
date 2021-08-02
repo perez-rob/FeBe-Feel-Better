@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const withAuth = require("../../utils/auth");
 const { Activity } = require("../../models");
 
 router.get("/", async (req, res) => {
@@ -14,9 +15,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const activityE2 = await Activity.findByPk(req.params.id, {
-      attributes: ["title", "description"],
-    });
+    const activityE2 = await Activity.findByPk(req.params.id);
 
     const newActivity = activityE2.get({ plain: true });
     res.status(200).json(newActivity);
@@ -25,7 +24,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const postActivity = await Activity.create({
       ...req.body,

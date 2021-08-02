@@ -13,8 +13,9 @@ const loginForm = async (event) => {
       document.location.replace("/dashboard");
     } else {
       const resMsg = await res.json();
-      console.log('this is', resMsg);
-      if(resMsg.message==="Incorrect email/password"){M.toast({ html: "Invalid email or password ! Please try again." });};
+      if (resMsg.message === "Incorrect email/password") {
+        M.toast({ html: "Invalid email or password ! Please try again." });
+      }
     }
   }
 };
@@ -44,7 +45,6 @@ const signUp = async (event) => {
     } else {
       const resMsg = await res.json();
 
-      console.log(resMsg);
       switch (resMsg.errors[0].message) {
         case "user.username must be unique":
           M.toast({ html: "Username taken, choose a different one" });
@@ -67,14 +67,12 @@ const signUp = async (event) => {
   }
 };
 
-
-$(document).ready(function(){
-  $('.parallax').parallax();
+$(document).ready(function () {
+  $(".parallax").parallax();
 });
 
-if (document.getElementById("login-form")){
+if (document.getElementById("login-form")) {
   document.getElementById("login-form").addEventListener("submit", loginForm);
 } else {
   document.getElementById("signup-form").addEventListener("submit", signUp);
 }
-

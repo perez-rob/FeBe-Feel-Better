@@ -1,6 +1,6 @@
  
   <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons right">cloud</i>How are you feeling?</a>
+  <a id="mood-button" class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons right">cloud</i>Moods</a>
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
@@ -11,9 +11,12 @@
           {{> moodOptions}}
          {{/each}}
          </p>
+         
     </div>
     <div class="modal-footer">
-      <a href="#" class="modal-close waves-effect waves-green btn-flat">Next</a>
+      <div id="for-mood-description">
+         </div>
+      <script src="/js/showDescriptions.js"></script>
     </div>
   </div>
  

@@ -11,6 +11,10 @@ router.get("/signup", async (req, res) => {
   res.render("signupPage", { loggedIn: req.session.loggedIn });
 });
 
+router.get("/contact-us", async (req, res) => {
+  res.render("contact-us", { loggedIn: req.session.loggedIn });
+});
+
 router.get("/dashboard", async (req, res) => {
   try {
     if (!req.session.loggedIn) {
@@ -27,16 +31,9 @@ router.get("/dashboard", async (req, res) => {
           { model: Activity, attributes: ["title", "description"] },
         ],
       });
-      let userName;
-      if (req.session.loggedIn) {
-        const userPost = await User.findByPk(req.session.user_id, {
-          attributes: ["username"],
-        });
-        userName = userPost.get({ plain: true });
-      }
 
       const posts = communityPost.map((post) => post.get({ plain: true }));
-      console.log(posts);
+      // console.log(posts);
       const userData = await User.findByPk(req.session.user_id);
 
       const user = userData.get({ plain: true });
@@ -50,7 +47,7 @@ router.get("/dashboard", async (req, res) => {
         user,
         loggedIn: req.session.loggedIn,
         userId: req.session.user_id,
-        userName,
+        resultPending: req.session.resultPending,
         posts,
       });
     }
@@ -64,11 +61,19 @@ router.get("/addActivity", withAuth, async (req, res) => {
   try {
     const activityData = await Activity.findAll();
 
+    const userData = await User.findByPk(req.session.user_id);
+
     const activities = await activityData.map((act) =>
       act.get({ plain: true })
     );
 
-    res.render("addActivity", { activities, loggedIn: req.session.loggedIn });
+    const user = userData.get({ plain: true });
+
+    res.render("addActivity", {
+      user,
+      activities,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -166,27 +171,6 @@ router.get("/test/mood/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// router.get("/test/mood/:id", async (req, res) => {
-//   try {
-//     const aumData = await AUM.findAll({
-//       group: "activity_id",
-//       where: {
-//         mood_id: req.params.id,
-//         result: true,
-//       },
-//       include: [{ model: Activity }],
-//     });
-
-//     if (!aumData) {
-//       res.status(400).json({ message: "ERROR" });
-//     }
-
-//     res.status(200).json(aumData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 // *********************  END TEST ROUTES  ************************ //
 
