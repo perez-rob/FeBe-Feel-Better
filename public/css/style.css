@@ -1,15 +1,8 @@
 body {
-<<<<<<< HEAD
-	background-image: url(images/background.png);
-	background-color: white;
-	background-size: cover;
-  }
-=======
   background-color: white;
   position: relative;
   z-index: 1;
 }
->>>>>>> 5e3bd0e43c3400ffe6c3af4a308c5938a37439f1
 
 #temp-spacer {
   height: 100px;
