@@ -1,6 +1,12 @@
+{{! removed tooltipped class in favor of mouse effects to add tool tip back add the next line to class and the following line as attributes }}
+{{! tooltipped }}
+{{!--   data-position="bottom" data-tooltip="{{description}}"  --}}
+
 <a
-  class="waves-effect waves-light btn tooltipped moodbtn"
+  class="waves-effect waves-light btn moodbtn"
   data-id="{{id}}"
-  data-position="bottom"
-  data-tooltip="{{description}}"
+  data-desc="{{description}}"
+  data-name="{{name}}"
+  onmouseover="mOver(this.dataset.desc)"
+  onmouseout="mOut()"
 ><i class="material-icons right">insert_emoticon</i>{{name}}</a>

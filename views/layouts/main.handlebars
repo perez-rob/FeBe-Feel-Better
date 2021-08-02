@@ -4,11 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feel Better</title>
+  <title>FeBe - Feel Better</title>
   <link rel="stylesheet" href="/css/materialize.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Shadows+Into+Light&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/icon?family=shadows_into_light|Material+Icons" rel="stylesheet">
-  {{!-- <link rel="stylesheet" href="/css/reset.css"> --}}
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/png" href="/images/FeBe_Logo.jpg">
 </head>
 
 <body>
@@ -23,11 +26,15 @@
             <a href="/" class="brand-logo left">FeBe - Feel Better</a>
                     <ul id="nav-mobile" class="right">
                 <li><a href="/dashboard" >Dashboard</a></li>
+                {{#if loggedIn}}
                 <li><a href="/addActivity">Activities</a></li>
+                {{else}}
+                <li><a href="/contact-us">About</a></li>
+                {{/if}}
                 {{#if loggedIn}}
                 <li><a  id="logout">Logout</a></li>
                 {{else}}
-                <li><a  id="login" href="#login-form">Login</a></li>
+                <li><a  id="login" href="/#login-form">Login</a></li>
                 {{/if}}
             </ul>
             </h2>
@@ -58,7 +65,7 @@
         
             <div class="footer-copyright">
                 <div class="container">
-                    © 2021 TBD
+                    © 2021 FeBe Group
                     <a class="grey-text text-lighten-4 right" href="/contact-us">About the Team</a>
                 </div>
             </div>

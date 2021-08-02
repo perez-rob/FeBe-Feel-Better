@@ -10,11 +10,14 @@ const appendMessage = (message, color) => {
   messageContainer.append(messageElement);
   messageElement.scrollIntoView(true);
 };
-const userName = messageContainer.getAttribute("data-user");
-appendMessage("You Joined Chat", "green");
-socket.emit("new-user", userName);
 
-// socket.auth = { username: 'Bob' }
+const handleJoinChat = () => {
+  const root = document.querySelector(":root");
+  root.style.setProperty("--pseudo-text", `[]`);
+  const userName = messageContainer.getAttribute("data-user");
+  appendMessage("You Joined Chat", "green");
+  socket.emit("new-user", userName);
+};
 
 socket.on("chat-message", (data) => {
   appendMessage(`${data.userName}: ${data.message}`, "black");
@@ -48,3 +51,7 @@ messageForm.addEventListener("submit", (event) => {
 document
   .getElementById("message-input")
   .addEventListener("keypress", submitOnEnter);
+
+document
+  .getElementById("join-chat-btn")
+  .addEventListener("click", handleJoinChat);

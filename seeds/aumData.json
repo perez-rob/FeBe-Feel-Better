@@ -3,72 +3,84 @@
     "user_id": 1,
     "mood_id": 1,
     "activity_id": 1,
+    "date_time": "2021-07-02 03:06:18",
     "result": true
   },
   {
     "user_id": 1,
     "mood_id": 1,
     "activity_id": 13,
+    "date_time": "2021-07-03 13:06:18",
     "result": false
   },
   {
     "user_id": 1,
     "mood_id": 4,
     "activity_id": 12,
+    "date_time": "2021-07-03 15:06:18",
     "result": false
   },
   {
     "user_id": 1,
     "mood_id": 2,
     "activity_id": 10,
+    "date_time": "2021-07-04 13:06:18",
     "result": true
   },
   {
     "user_id": 2,
     "mood_id": 1,
     "activity_id": 1,
+    "date_time": "2021-07-05 03:06:18",
     "result": true
   },
   {
     "user_id": 2,
     "mood_id": 3,
     "activity_id": 6,
+    "date_time": "2021-07-05 03:09:18",
     "result": false
   },
   {
     "user_id": 2,
     "mood_id": 3,
     "activity_id": 8,
+    "date_time": "2021-07-06 03:06:18",
     "result": true
   },
   {
     "user_id": 3,
     "mood_id": 1,
     "activity_id": 1,
+    "date_time": "2021-07-09 11:06:18",
     "result": false
   },
   {
     "user_id": 3,
     "mood_id": 5,
     "activity_id": 15,
+    "date_time": "2021-07-15 03:06:18",
     "result": false
   },
   {
     "user_id": 3,
     "mood_id": 1,
     "activity_id": 6,
+    "date_time": "2021-07-17 03:06:18",
     "result": true
   },
   {
     "user_id": 3,
     "mood_id": 2,
     "activity_id": 9,
+    "date_time": "2021-07-22 12:06:18",
     "result": true
   },
   {
     "user_id": 3,
     "mood_id": 1,
     "activity_id": 13,
+    "date_time": "2021-07-23 03:06:18",
     "result": true
   }
 ]
