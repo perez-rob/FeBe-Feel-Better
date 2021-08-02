@@ -11,6 +11,10 @@ router.get("/signup", async (req, res) => {
   res.render("signupPage", { loggedIn: req.session.loggedIn });
 });
 
+router.get("/contact-us", async (req, res) => {
+  res.render("contact-us", { loggedIn: req.session.loggedIn });
+});
+
 router.get("/dashboard", async (req, res) => {
   try {
     if (!req.session.loggedIn) {
