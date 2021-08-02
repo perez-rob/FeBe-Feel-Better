@@ -1,14 +1,25 @@
+* {
+  font-family: "shadows_into_light", Georgia, 'Times New Roman', Times, serif;
+}
+:root {
+  --dark:darkblue;
+ --primary: blue;
+}
+
 body {
   background-color: white;
   position: relative;
   z-index: 1;
 }
+<<<<<<< HEAD
 
 nav .badge {
   position: relative;
   top: 20px;
   right:25px;
 }
+=======
+>>>>>>> 8ccd826f74bf9c05b4c51a8f667e0a6ec0ea1519
 
 #temp-spacer {
   height: 100px;
@@ -94,36 +105,36 @@ header {
 }
 
 .input-field input:focus + label {
-  color: blue !important;
+  color: var(--primary) !important;
 }
 /* label underline focus color */
 .row .input-field input:focus {
-  border-bottom: 1px solid blue !important;
-  box-shadow: 0 1px 0 0 blue !important;
+  border-bottom: 1px solid var(--primary) !important;
+  box-shadow: 0 1px 0 0 var(--primary) !important;
 }
 
 .input-field label {
-  color: darkblue !important;
+  color: var(--dark) !important;
 }
 /* label underline focus color */
 .row .input-field input {
-  border-bottom: 1px solid darkblue !important;
-  box-shadow: 0 1px 0 0 darkblue !important;
+  border-bottom: 1px solid var(--dark) !important;
+  box-shadow: 0 1px 0 0 var(--dark) !important;
 }
 
 .input-field textarea:focus + label {
-  color: blue !important;
+  color: var(--primary) !important;
 }
 /* label underline focus color */
 .row .input-field textarea:focus {
-  border-bottom: 1px solid blue !important;
-  box-shadow: 0 1px 0 0 blue !important;
+  border-bottom: 1px solid var(--primary) !important;
+  box-shadow: 0 1px 0 0 var(--primary) !important;
 }
 
 /* label underline focus color */
 .row .input-field textarea {
-  border-bottom: 1px solid darkblue !important;
-  box-shadow: 0 1px 0 0 darkblue !important;
+  border-bottom: 1px solid var(--dark) !important;
+  box-shadow: 0 1px 0 0 var(--dark) !important;
 }
 
 main {
@@ -137,7 +148,7 @@ main {
 }
 
 .form-box {
-  border: 2px solid darkblue;
+  border: 2px solid var(--dark);
   border-radius: 20px;
   padding: 0 4rem 2rem 4rem;
   margin-top: 4rem;
@@ -153,7 +164,7 @@ form .btn {
 
 #then-sign-up {
   font-size: 1.3rem;
-  color: darkblue;
+  color: var(--dark);
   margin-top: 1rem;
 }
 
@@ -167,10 +178,27 @@ form .btn {
 }
 
 #activity-list {
-  max-height: 75vh;
+  max-height: 60vh;
   overflow-y: scroll;
 }
 
 .footer-fixed {
   width: 100%;
+}
+
+.activity-card {
+  border: 2px solid var(--dark);
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--dark);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--dark);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color:var(--dark);
 }

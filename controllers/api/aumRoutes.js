@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Mood, Activity, AUM, User } = require("../../models");
 const Op = require("sequelize").Op;
 
-router.get("/activityByMood/:id", async (req, res) => {
+router.get("/activityByMood/:id/:user", async (req, res) => {
   try {
     const aumData = await AUM.findAll({
       group: "activity_id",
@@ -12,55 +12,45 @@ router.get("/activityByMood/:id", async (req, res) => {
       },
       include: [{ model: Activity }],
     });
-
-    if (!aumData) {
-      res.status(400).json({ message: "ERROR" });
-    }
-    console.log(aumData);
-    console.log("++++++++++++++++++++++++++++++++++");
-    const aums = await aumData.map((aum) => aum.get({ plain: true }));
-    console.log(aums);
-
-    res.status(200).json(aums);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-// :mood/:user
-router.get("/activityExUser/", async (req, res) => {
-  try {
-    const aumData = await Activity.findAll({
-      include: [{ model: AUM }],
+    console.log("================");
+    const aumData2 = await AUM.findAll({
+      where: {
+        [Op.and]: [
+          { mood_id: req.params.id },
+          { user_id: req.params.user },
+          { result: false },
+        ],
+      },
     });
 
-    if (!aumData) {
-      res.status(400).json({ message: "ERROR" });
+    console.log("USER", req.session.user_id);
+    const aums = aumData.map((aum) => aum.get({ plain: true }));
+    console.log("AUM1", aums);
+    const userAum = aumData2.map((aum2) => aum2.get({ plain: true }));
+    console.log("USERAUM", userAum);
+    let results = [];
+    let toAdd = true;
+    for (let i = 0; i < aums.length; i++) {
+      for (let j = 0; j < userAum.length; j++) {
+        if (
+          aums[i].activity.id === userAum[j].activity_id &&
+          userAum[j].result === false
+        ) {
+          toAdd = false;
+        }
+      }
+      if (toAdd === true) {
+        results.push(aums[i]);
+      } else {
+        toAdd = true;
+      }
     }
-    console.log(aumData);
-    console.log("++++++++++++++++++++++++++++++++++");
-    const aums = await aumData.map((aum) => aum.get({ plain: true }));
-    console.log(aums);
-
-    res.status(200).json(aums);
+    console.log(results);
+    res.status(200).json(results);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-// const aumData = await Activity.findAll({
-//   where: {
-//     [Op.not]: [
-//       {
-//         [Op.and]: [
-//           { "$AUM.mood_id$": req.params.mood },
-//           { "$AUM.user_id$": req.params.user },
-//           { "$AUM.result$": false },
-//         ],
-//       },
-//     ],
-//   },
-//   include: [{ model: AUM }],
-// });
 
 router.get("/activityExUser/:mood/:user", async (req, res) => {
   try {
