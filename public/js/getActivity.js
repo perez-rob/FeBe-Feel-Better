@@ -11,9 +11,11 @@ const processStoredAum = async (storedAum) => {
   const resAct = await fetch(`/api/activity/${storedAum.activity_id}`);
   if (resAct.ok) {
     const currentAct = await resAct.json();
+
     const newActivity = document.createElement("div");
     const newActivityTitle = document.createElement("div");
     const newActivityDescription = document.createElement("div");
+
     newActivity.setAttribute("id", "suggested-activity");
     newActivityTitle.setAttribute("id", "suggested-activity-title");
     newActivityDescription.setAttribute("id", "suggested-activity-description");
