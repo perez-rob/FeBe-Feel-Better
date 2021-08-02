@@ -171,7 +171,42 @@ form .btn {
 #activity-list {
   max-height: 60vh;
   overflow-y: scroll;
+  
 }
+
+#activity-list::-webkit-scrollbar{
+  width: 5px;
+}
+
+#activity-list::-webkit-scrollbar-track {
+  border: .5px solid var(--dark);
+  padding: 1px 0;
+  background-color: #404040;
+}
+
+#activity-list::-webkit-scrollbar-thumb {
+  border-radius: 5x;
+  box-shadow: inset 0 0 3px rgba(0,0,0,.3);
+  background-color: #737272;
+  border: .5px solid #000;
+}
+
+/* ::-webkit-scrollbar {
+  width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+  background:black; 
+  border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+  background:rgb(54, 56, 58);  */
 
 .footer-fixed {
   width: 100%;
