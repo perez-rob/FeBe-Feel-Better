@@ -38,6 +38,9 @@ const processStoredAum = async (storedAum) => {
     goodBtn.innerText = "Great!";
     badBtn.innerText = "Not so good...";
 
+    const jsScript = document.createElement("script");
+    jsScript.setAttribute("src", "/js/activityResult.js");
+
     document.getElementById("suggested-activity-div").appendChild(newActivity);
     document
       .getElementById("suggested-activity-div")
@@ -45,6 +48,7 @@ const processStoredAum = async (storedAum) => {
     resultBtnDiv.appendChild(goodBtn);
     resultBtnDiv.appendChild(badBtn);
     document.getElementById("suggested-activity-div").appendChild(resultBtnDiv);
+    document.getElementById("suggested-activity-div").appendChild(jsScript);
   } else {
     console.log("ERROR RETRIEVING CURRENT ACTIVITY DATA");
     const newActivity = document.createElement("div");
@@ -74,6 +78,9 @@ const processStoredAum = async (storedAum) => {
     goodBtn.innerText = "Great!";
     badBtn.innerText = "Not so good...";
 
+    const jsScript = document.createElement("script");
+    jsScript.setAttribute("src", "/js/activityResult.js");
+
     document.getElementById("suggested-activity-div").appendChild(newActivity);
     document
       .getElementById("suggested-activity-div")
@@ -81,6 +88,7 @@ const processStoredAum = async (storedAum) => {
     resultBtnDiv.appendChild(goodBtn);
     resultBtnDiv.appendChild(badBtn);
     document.getElementById("suggested-activity-div").appendChild(resultBtnDiv);
+    document.getElementById("suggested-activity-div").appendChild(jsScript);
   }
 };
 
@@ -170,6 +178,9 @@ const getActivityRand = async (event) => {
   goodBtn.innerText = "Great!";
   badBtn.innerText = "Not so good...";
 
+  const jsScript = document.createElement("script");
+  jsScript.setAttribute("src", "/js/activityResult.js");
+
   document.getElementById("mood-button").innerText =
     event.target.getAttribute("data-name");
   document.getElementById("mood-button").classList.remove("modal-trigger");
@@ -181,6 +192,7 @@ const getActivityRand = async (event) => {
   resultBtnDiv.appendChild(goodBtn);
   resultBtnDiv.appendChild(badBtn);
   document.getElementById("suggested-activity-div").appendChild(resultBtnDiv);
+  document.getElementById("suggested-activity-div").appendChild(jsScript);
 
   addToAUM(id, activity[randNumLen].id);
 };
@@ -245,6 +257,9 @@ const getActivity = async (event) => {
   goodBtn.innerText = "Great!";
   badBtn.innerText = "Not so good...";
 
+  const jsScript = document.createElement("script");
+  jsScript.setAttribute("src", "/js/activityResult.js");
+
   document.getElementById("mood-button").innerText =
     event.target.getAttribute("data-name");
   document.getElementById("mood-button").classList.remove("modal-trigger");
@@ -256,6 +271,7 @@ const getActivity = async (event) => {
   resultBtnDiv.appendChild(goodBtn);
   resultBtnDiv.appendChild(badBtn);
   document.getElementById("suggested-activity-div").appendChild(resultBtnDiv);
+  document.getElementById("suggested-activity-div").appendChild(jsScript);
 
   addToAUM(id, activity[randNumLen].activity.id);
 };

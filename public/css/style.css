@@ -340,8 +340,14 @@ footer {
   font-size: 16px;
 }
 
+#activity-result-caption {
+  font-weight: 900;
+  margin-top: 3rem;
+}
+
 #result-btn-div button {
   margin: 1rem 2rem;
+  width: 15vw;
 }
 
 #chat-col {
