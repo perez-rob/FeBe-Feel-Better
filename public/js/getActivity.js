@@ -1,8 +1,11 @@
 const getActivity = async (event) => {
   console.log("MAIN");
+  const userId = document
+    .getElementById("dash-container")
+    .getAttribute("data-user");
   const id = event.target.getAttribute("data-id");
   // console.log(id);
-  const res = await fetch(`api/aum/activityByMood/${id}`, {
+  const res = await fetch(`api/aum/activityByMood/${id}/${userId}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
@@ -11,8 +14,14 @@ const getActivity = async (event) => {
   let randNumLen;
   if (res.ok) {
     activity = await res.json();
+    console.log(activity);
+    if (activity.length === 0) {
+      console.log("EMPTY");
+      getActivityRand(event);
+      return;
+    }
     randNumLen = Math.floor(Math.random() * activity.length);
-    console.log(randNumLen);
+
     console.log("this is", activity);
     console.log("this is", activity[randNumLen].activity.title);
     const instance = M.Modal.getInstance(document.getElementById("modal1"));
@@ -55,7 +64,7 @@ const getActivityRand = async (event) => {
   }
 
   const newActivity = document.createElement("div");
-  newActivity.innerText = activity[randNumLen].activity.title;
+  newActivity.innerText = activity[randNumLen].title;
 
   document.getElementById("suggested-activity").appendChild(newActivity);
 };
