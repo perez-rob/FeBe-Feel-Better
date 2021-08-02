@@ -82,7 +82,7 @@ const getActivityRand = async (event) => {
   const userId = document
     .getElementById("dash-container")
     .getAttribute("data-user");
-  const id = event.target.getAttribute("data-id");
+  const id = await event.target.getAttribute("data-id");
   const res = await fetch(`api/aum/activityExUser/${id}/${userId}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -127,7 +127,7 @@ const getActivity = async (event) => {
   const userId = document
     .getElementById("dash-container")
     .getAttribute("data-user");
-  const id = event.target.getAttribute("data-id");
+  const id = await event.target.getAttribute("data-id");
   // console.log(id);
   const res = await fetch(`api/aum/activityByMood/${id}/${userId}`, {
     method: "GET",

@@ -14,15 +14,12 @@ body {
   position: relative;
   z-index: 1;
 }
-<<<<<<< HEAD
 
 nav .badge {
   position: relative;
   top: 20px;
-  right:25px;
+  right: 25px;
 }
-=======
->>>>>>> 8ccd826f74bf9c05b4c51a8f667e0a6ec0ea1519
 
 #temp-spacer {
   height: 7vh;
