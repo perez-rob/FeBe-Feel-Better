@@ -32,6 +32,7 @@ Adding Act. feature/Showing alert that same activites cannot be added again:
 ![](public\images\updatedact.gif)
 
 Chat box:
+
 ![](public\images\chat.gif)
 
 Community Post: Allows user to see other user's post
