@@ -10,7 +10,6 @@ const processStoredAum = async (storedAum) => {
 
   const resAct = await fetch(`/api/activity/${storedAum.activity_id}`);
   if (resAct.ok) {
-    document.getElementById("hiddenPlaceH").style.display = "none";
     const currentAct = await resAct.json();
 
     const newActivity = document.createElement("div");
