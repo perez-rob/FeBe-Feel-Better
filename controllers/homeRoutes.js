@@ -24,7 +24,8 @@ router.get("/dashboard", async (req, res) => {
         attributes: ["name", "id", "description"],
       });
       const communityPost = await AUM.findAll({
-        limit: 3,
+        order: [["date_time", "DESC"]],
+        limit: 5,
         include: [
           { model: User, attributes: ["username"] },
           { model: Mood, attributes: ["name"] },
