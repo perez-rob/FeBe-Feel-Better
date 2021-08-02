@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const withAuth = require("../../utils/auth");
 const { Mood, Activity, AUM, User } = require("../../models");
 const Op = require("sequelize").Op;
 
@@ -12,7 +13,7 @@ router.get("/activityByMood/:id/:user", async (req, res) => {
       },
       include: [{ model: Activity }],
     });
-    console.log("================");
+
     const aumData2 = await AUM.findAll({
       where: {
         [Op.and]: [
@@ -23,11 +24,8 @@ router.get("/activityByMood/:id/:user", async (req, res) => {
       },
     });
 
-    console.log("USER", req.session.user_id);
     const aums = aumData.map((aum) => aum.get({ plain: true }));
-    console.log("AUM1", aums);
     const userAum = aumData2.map((aum2) => aum2.get({ plain: true }));
-    console.log("USERAUM", userAum);
     let results = [];
     let toAdd = true;
     for (let i = 0; i < aums.length; i++) {
@@ -45,7 +43,6 @@ router.get("/activityByMood/:id/:user", async (req, res) => {
         toAdd = true;
       }
     }
-    console.log(results);
     res.status(200).json(results);
   } catch (err) {
     res.status(500).json(err);
@@ -72,8 +69,7 @@ router.get("/activityExUser/:mood/:user", async (req, res) => {
 
     const activities = activityData.map((act) => act.get({ plain: true }));
     const aums = aumData.map((aum) => aum.get({ plain: true }));
-    console.log(activities);
-    console.log(aums);
+
     let results = [];
     let toAdd = true;
     for (let i = 0; i < activities.length; i++) {
@@ -91,8 +87,22 @@ router.get("/activityExUser/:mood/:user", async (req, res) => {
         toAdd = true;
       }
     }
-    console.log(results);
+
     res.status(200).json(results);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/", withAuth, async (req, res) => {
+  try {
+    const newAum = await AUM.create(req.body);
+
+    req.session.save(() => {
+      req.session.resultPending = true;
+
+      res.status(200).json(newAum);
+    });
   } catch (err) {
     res.status(500).json(err);
   }
