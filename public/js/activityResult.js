@@ -21,6 +21,7 @@ const handleUpdate = async (state) => {
       '<i class="material-icons right">cloud</i>Moods';
     localStorage.removeItem(`my_activity-${currentUser}`);
     document.getElementById("suggested-activity-div").innerHTML = "";
+    document.location.reload();
   } else {
     console.log("ERROR UPDATING");
   }

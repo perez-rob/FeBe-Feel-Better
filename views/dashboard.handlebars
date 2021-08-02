@@ -1,5 +1,21 @@
     
     <div id="temp-spacer"></div>
+
+    <div class="parallax-container para2">
+      <div class="parallax"><img id="para-img" src="/images/alberta.jpg"></div>
+    </div>
+    <script>
+        const srcList = [
+        "/images/alberta.jpg",
+        "/images/boats.jpg",
+        "/images/moon.jpg",
+        "/images/mountain.jpg",
+        ]
+
+        let randNum = Math.floor(Math.random() * srcList.length)
+        document.getElementById('para-img').setAttribute('src', srcList[randNum])
+
+    </script>
     
     <div id="dash-container" data-user='{{userId}}' class="container">
         <h2>Welcome <span id="uName-span">{{user.username}}</span>!</h2>
@@ -30,17 +46,19 @@
             {{!-- column for chat and community board --}}
             <div class="col s6">
                 <div class="row">
-                    <div class="placeholder">
-                        <h4>Our Community:</h4>                 
+                    <div>
+                        <h4>Our Community:</h4>  
+                        <div class="placeholder">               
                         {{#each posts as |post|}}
                         {{> community}}
                         {{/each}}
+                        </div>
                     </div>
                 </div>
             </div>
 
             {{!-- column for mood and activity stuff --}}
-            <div id="chat-col" class="col s6">
+            <div id="chat-col" class="col s5 push-s1">
                 {{> chat username=user.username}}
                 <button id="join-chat-btn" class="waves-effect waves-light btn">Join Chat</button>
             </div>

@@ -102,9 +102,13 @@ const storedAum = JSON.parse(
   localStorage.getItem(`my_activity-${currentUser}`)
 );
 if (storedAum !== null) {
-  console.log(storedAum);
   document.getElementById("mood-button").classList.remove("modal-trigger");
   processStoredAum(storedAum);
+} else {
+  const saPlaceholder = document.createElement("h6");
+  saPlaceholder.innerText = "(Select a mood to receive an activity suggestion)";
+  saPlaceholder.setAttribute("style", "font-weight:900");
+  document.getElementById("suggested-activity-div").appendChild(saPlaceholder);
 }
 
 const addToAUM = async (moodId, activityId) => {
@@ -153,6 +157,8 @@ const getActivityRand = async (event) => {
   } else {
     console.log("FETCH FAILED");
   }
+
+  document.getElementById("suggested-activity-div").innerHTML = "";
 
   const newActivity = document.createElement("div");
   const newActivityTitle = document.createElement("div");
@@ -231,6 +237,8 @@ const getActivity = async (event) => {
   } else {
     console.log("FETCH FAILED");
   }
+
+  document.getElementById("suggested-activity-div").innerHTML = "";
 
   const newActivity = document.createElement("div");
   const newActivityTitle = document.createElement("div");
