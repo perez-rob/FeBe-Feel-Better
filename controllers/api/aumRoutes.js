@@ -16,8 +16,6 @@ router.get("/activityByMood/:id", async (req, res) => {
     if (!aumData) {
       res.status(400).json({ message: "ERROR" });
     }
-    console.log(aumData);
-    console.log("++++++++++++++++++++++++++++++++++");
     const aums = await aumData.map((aum) => aum.get({ plain: true }));
     console.log(aums);
 
@@ -26,41 +24,6 @@ router.get("/activityByMood/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-// :mood/:user
-router.get("/activityExUser/", async (req, res) => {
-  try {
-    const aumData = await Activity.findAll({
-      include: [{ model: AUM }],
-    });
-
-    if (!aumData) {
-      res.status(400).json({ message: "ERROR" });
-    }
-    console.log(aumData);
-    console.log("++++++++++++++++++++++++++++++++++");
-    const aums = await aumData.map((aum) => aum.get({ plain: true }));
-    console.log(aums);
-
-    res.status(200).json(aums);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// const aumData = await Activity.findAll({
-//   where: {
-//     [Op.not]: [
-//       {
-//         [Op.and]: [
-//           { "$AUM.mood_id$": req.params.mood },
-//           { "$AUM.user_id$": req.params.user },
-//           { "$AUM.result$": false },
-//         ],
-//       },
-//     ],
-//   },
-//   include: [{ model: AUM }],
-// });
 
 router.get("/activityExUser/:mood/:user", async (req, res) => {
   try {

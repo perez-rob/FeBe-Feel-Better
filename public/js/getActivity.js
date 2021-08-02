@@ -11,8 +11,14 @@ const getActivity = async (event) => {
   let randNumLen;
   if (res.ok) {
     activity = await res.json();
+    console.log(activity);
+    if (activity.length === 0) {
+      console.log("EMPTY");
+      getActivityRand(event);
+      return;
+    }
     randNumLen = Math.floor(Math.random() * activity.length);
-    console.log(randNumLen);
+
     console.log("this is", activity);
     console.log("this is", activity[randNumLen].activity.title);
     const instance = M.Modal.getInstance(document.getElementById("modal1"));
@@ -55,13 +61,13 @@ const getActivityRand = async (event) => {
   }
 
   const newActivity = document.createElement("div");
-  newActivity.innerText = activity[randNumLen].activity.title;
+  newActivity.innerText = activity[randNumLen].title;
 
   document.getElementById("suggested-activity").appendChild(newActivity);
 };
 
 const shuffleFunctions = (event) => {
-  const randSelect = Math.floor(Math.random() * 5);
+  const randSelect = Math.floor(Math.random() * 4);
   if (randSelect === 3) {
     getActivityRand(event);
     return;
