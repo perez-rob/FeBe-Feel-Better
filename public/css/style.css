@@ -15,6 +15,12 @@ body {
   z-index: 1;
 }
 
+nav .badge {
+  position: relative;
+  top: 20px;
+  right: 25px;
+}
+
 #temp-spacer {
   height: 7vh;
 }
@@ -281,6 +287,7 @@ footer {
 
 #mood-row h3 {
   margin-top: 0;
+  text-align: center;
 }
 
 #mood-partial {
@@ -307,6 +314,12 @@ footer {
   border-radius: 10px;
 }
 
+#suggested-activity-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #suggested-activity {
   background-color: var(--dark);
   max-width: 30vw;
@@ -325,6 +338,16 @@ footer {
 #suggested-activity-description {
   color: gainsboro;
   font-size: 16px;
+}
+
+#activity-result-caption {
+  font-weight: 900;
+  margin-top: 3rem;
+}
+
+#result-btn-div button {
+  margin: 1rem 2rem;
+  width: 15vw;
 }
 
 #chat-col {
@@ -408,4 +431,31 @@ footer {
   margin-top: 20px;
   font-size: 14px;
   line-height: 20px;
+}
+
+.actbtn {
+  background-color: darkslateblue;
+  font-size: 18px;
+  color: cornsilk;
+  width: 16vw;
+  padding: 0.5rem 1.5rem;
+  height: 60px;
+  border-radius: 5px;
+  transition: all 0.3s ease-out;
+}
+
+.actbtn:hover {
+  background-color: var(--dark);
+}
+
+.actbtn:focus {
+  background-color: var(--dark);
+}
+
+.add-act-text {
+  font-weight: bold;
+}
+
+#intro-info p {
+  margin: 0 20px 50px;
 }

@@ -108,4 +108,22 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+router.put("/:id", withAuth, async (req, res) => {
+  try {
+    const newAum = await AUM.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    req.session.save(() => {
+      req.session.resultPending = false;
+
+      res.status(200).json(newAum);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

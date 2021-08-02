@@ -26,7 +26,32 @@ const processStoredAum = async (storedAum) => {
     newActivity.appendChild(newActivityTitle);
     newActivity.appendChild(newActivityDescription);
 
+    const activityResultCaption = document.createElement("h5");
+    const resultBtnDiv = document.createElement("div");
+    resultBtnDiv.setAttribute("id", "result-btn-div");
+    const goodBtn = document.createElement("button");
+    const badBtn = document.createElement("button");
+    activityResultCaption.innerText =
+      "How did that activity work with your current mood?";
+    activityResultCaption.setAttribute("id", "activity-result-caption");
+    goodBtn.setAttribute("class", "waves-effect waves-light btn");
+    badBtn.setAttribute("class", "waves-effect waves-light btn");
+    goodBtn.setAttribute("id", "good-btn");
+    badBtn.setAttribute("id", "bad-btn");
+    goodBtn.innerText = "Great!";
+    badBtn.innerText = "Not so good...";
+
+    const jsScript = document.createElement("script");
+    jsScript.setAttribute("src", "/js/activityResult.js");
+
     document.getElementById("suggested-activity-div").appendChild(newActivity);
+    document
+      .getElementById("suggested-activity-div")
+      .appendChild(activityResultCaption);
+    resultBtnDiv.appendChild(goodBtn);
+    resultBtnDiv.appendChild(badBtn);
+    document.getElementById("suggested-activity-div").appendChild(resultBtnDiv);
+    document.getElementById("suggested-activity-div").appendChild(jsScript);
   } else {
     console.log("ERROR RETRIEVING CURRENT ACTIVITY DATA");
     const newActivity = document.createElement("div");
@@ -41,7 +66,32 @@ const processStoredAum = async (storedAum) => {
     newActivity.appendChild(newActivityTitle);
     newActivity.appendChild(newActivityDescription);
 
+    const activityResultCaption = document.createElement("h5");
+    const resultBtnDiv = document.createElement("div");
+    resultBtnDiv.setAttribute("id", "result-btn-div");
+    const goodBtn = document.createElement("button");
+    const badBtn = document.createElement("button");
+    activityResultCaption.innerText =
+      "How did that activity work with your current mood?";
+    activityResultCaption.setAttribute("id", "activity-result-caption");
+    goodBtn.setAttribute("class", "waves-effect waves-light btn");
+    badBtn.setAttribute("class", "waves-effect waves-light btn");
+    goodBtn.setAttribute("id", "good-btn");
+    badBtn.setAttribute("id", "bad-btn");
+    goodBtn.innerText = "Great!";
+    badBtn.innerText = "Not so good...";
+
+    const jsScript = document.createElement("script");
+    jsScript.setAttribute("src", "/js/activityResult.js");
+
     document.getElementById("suggested-activity-div").appendChild(newActivity);
+    document
+      .getElementById("suggested-activity-div")
+      .appendChild(activityResultCaption);
+    resultBtnDiv.appendChild(goodBtn);
+    resultBtnDiv.appendChild(badBtn);
+    document.getElementById("suggested-activity-div").appendChild(resultBtnDiv);
+    document.getElementById("suggested-activity-div").appendChild(jsScript);
   }
 };
 
@@ -85,7 +135,7 @@ const getActivityRand = async (event) => {
   const userId = document
     .getElementById("dash-container")
     .getAttribute("data-user");
-  const id = event.target.getAttribute("data-id");
+  const id = await event.target.getAttribute("data-id");
   const res = await fetch(`api/aum/activityExUser/${id}/${userId}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -116,11 +166,36 @@ const getActivityRand = async (event) => {
   newActivity.appendChild(newActivityTitle);
   newActivity.appendChild(newActivityDescription);
 
+  const activityResultCaption = document.createElement("h5");
+  const resultBtnDiv = document.createElement("div");
+  resultBtnDiv.setAttribute("id", "result-btn-div");
+  const goodBtn = document.createElement("button");
+  const badBtn = document.createElement("button");
+  activityResultCaption.innerText =
+    "How did that activity work with your current mood?";
+  activityResultCaption.setAttribute("id", "activity-result-caption");
+  goodBtn.setAttribute("class", "waves-effect waves-light btn");
+  badBtn.setAttribute("class", "waves-effect waves-light btn");
+  goodBtn.setAttribute("id", "good-btn");
+  badBtn.setAttribute("id", "bad-btn");
+  goodBtn.innerText = "Great!";
+  badBtn.innerText = "Not so good...";
+
+  const jsScript = document.createElement("script");
+  jsScript.setAttribute("src", "/js/activityResult.js");
+
   document.getElementById("mood-button").innerText =
     event.target.getAttribute("data-name");
   document.getElementById("mood-button").classList.remove("modal-trigger");
 
   document.getElementById("suggested-activity-div").appendChild(newActivity);
+  document
+    .getElementById("suggested-activity-div")
+    .appendChild(activityResultCaption);
+  resultBtnDiv.appendChild(goodBtn);
+  resultBtnDiv.appendChild(badBtn);
+  document.getElementById("suggested-activity-div").appendChild(resultBtnDiv);
+  document.getElementById("suggested-activity-div").appendChild(jsScript);
 
   addToAUM(id, activity[randNumLen].id);
 };
@@ -130,7 +205,7 @@ const getActivity = async (event) => {
   const userId = document
     .getElementById("dash-container")
     .getAttribute("data-user");
-  const id = event.target.getAttribute("data-id");
+  const id = await event.target.getAttribute("data-id");
   // console.log(id);
   const res = await fetch(`api/aum/activityByMood/${id}/${userId}`, {
     method: "GET",
@@ -169,11 +244,37 @@ const getActivity = async (event) => {
   newActivity.appendChild(newActivityTitle);
   newActivity.appendChild(newActivityDescription);
 
+  const activityResultCaption = document.createElement("h5");
+  const resultBtnDiv = document.createElement("div");
+  resultBtnDiv.setAttribute("id", "result-btn-div");
+
+  const goodBtn = document.createElement("button");
+  const badBtn = document.createElement("button");
+  activityResultCaption.innerText =
+    "How did that activity work with your current mood?";
+  activityResultCaption.setAttribute("id", "activity-result-caption");
+  goodBtn.setAttribute("class", "waves-effect waves-light btn");
+  badBtn.setAttribute("class", "waves-effect waves-light btn");
+  goodBtn.setAttribute("id", "good-btn");
+  badBtn.setAttribute("id", "bad-btn");
+  goodBtn.innerText = "Great!";
+  badBtn.innerText = "Not so good...";
+
+  const jsScript = document.createElement("script");
+  jsScript.setAttribute("src", "/js/activityResult.js");
+
   document.getElementById("mood-button").innerText =
     event.target.getAttribute("data-name");
   document.getElementById("mood-button").classList.remove("modal-trigger");
 
   document.getElementById("suggested-activity-div").appendChild(newActivity);
+  document
+    .getElementById("suggested-activity-div")
+    .appendChild(activityResultCaption);
+  resultBtnDiv.appendChild(goodBtn);
+  resultBtnDiv.appendChild(badBtn);
+  document.getElementById("suggested-activity-div").appendChild(resultBtnDiv);
+  document.getElementById("suggested-activity-div").appendChild(jsScript);
 
   addToAUM(id, activity[randNumLen].activity.id);
 };
