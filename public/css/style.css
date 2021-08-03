@@ -13,6 +13,14 @@ body {
   background-color: white;
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "main" "footer";
+}
+
+nav {
+  background-image: url(../images/water.jpg);
+  background-size: cover;
 }
 
 nav .badge {
@@ -22,7 +30,7 @@ nav .badge {
 }
 
 #temp-spacer {
-  height: 7vh;
+  height: 65px;
 }
 
 .btn {
@@ -30,6 +38,7 @@ nav .badge {
   font-size: 20px;
   padding: 0.5rem 1.5rem;
   height: 60px;
+  width: fit-content;
   border-radius: 5px;
   transition: all 0.3s ease-out;
 }
@@ -93,6 +102,7 @@ header {
   align-items: center;
   position: fixed;
   z-index: 3;
+  grid-area: header;
 }
 
 .parallax-container {
@@ -116,6 +126,7 @@ header {
   justify-content: center;
   align-items: center;
   margin-bottom: 80px;
+  overflow: hidden;
 }
 
 #banner pre {
@@ -141,6 +152,14 @@ header {
   z-index: 1;
   /* transition: opacity 0.5s linear; */
   opacity: 0;
+}
+
+#banner img {
+  width: 80%;
+}
+
+#intro-info {
+  padding: 1rem 3rem;
 }
 
 #intro-info p {
@@ -183,6 +202,7 @@ header {
 
 main {
   margin-bottom: 3rem;
+  grid-area: main;
 }
 
 #toast-container {
@@ -208,7 +228,9 @@ form {
 form .btn {
   background-color: darkslateblue;
   font-size: 18px;
-  width: 8vw;
+  width: fit-content;
+  min-height: fit-content;
+  margin: 0 auto;
 }
 
 .other-form-link {
@@ -222,16 +244,19 @@ form .btn {
 }
 
 #side-pic {
-  background-image: url("../images/jellyfish.jpg");
   height: 400px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 2000px;
   margin-top: 4rem;
 }
 
+#side-pic img {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 50%;
+  /* transform: scale(0.2); */
+}
+
 #activity-list {
-  max-height: 60vh;
+  max-height: 70vh;
   overflow-y: scroll;
 }
 
@@ -271,6 +296,7 @@ form .btn {
 
 .footer-fixed {
   width: 100%;
+  grid-area: footer;
 }
 
 footer {
@@ -298,8 +324,10 @@ footer {
   text-transform: capitalize;
   font-size: 26px;
   height: 60px;
+  width: auto;
   padding: 0.8rem 3rem;
   margin: 0.5rem;
+  flex: 1 fit-content;
 }
 
 #mood-row {
@@ -327,6 +355,12 @@ footer {
   padding: 24px 24px 0 24px;
 }
 
+.modal-content p {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 fit-content;
+}
+
 .modal .modal-footer {
   text-align: center;
   min-height: 56px;
@@ -349,7 +383,7 @@ footer {
 
 #suggested-activity {
   background-color: var(--dark);
-  max-width: 30vw;
+  width: 30vw;
   padding: 1rem;
   border-radius: 10px;
 }
@@ -372,9 +406,15 @@ footer {
   margin-top: 3rem;
 }
 
+#result-btn-div {
+  width: 100%;
+  display: flex;
+}
+
 #result-btn-div button {
   margin: 1rem 2rem;
-  width: 15vw;
+  width: fit-content;
+  flex-grow: 1;
 }
 
 #activity-form textarea {
@@ -470,7 +510,7 @@ footer {
   background-color: darkslateblue;
   font-size: 18px;
   color: cornsilk;
-  width: 16vw;
+  width: fit-content;
   padding: 0.5rem 1.5rem;
   height: 60px;
   border-radius: 5px;
@@ -491,4 +531,53 @@ footer {
 
 #intro-info p {
   margin: 0 20px 50px;
+}
+
+/* .sidenav li {
+  position: relative;
+  z-index: 999;
+} */
+
+@media screen and (max-width: 992px) {
+  #banner img {
+    width: 100%;
+  }
+
+  #mood-row {
+    width: 65vw;
+  }
+
+  .placeholder {
+    height: 300px;
+  }
+
+  .card {
+    width: 60vw;
+  }
+
+  #suggested-activity {
+    width: 55vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #banner img {
+    width: 150%;
+  }
+
+  #mood-row {
+    width: 85vw;
+  }
+
+  #mood-button {
+    font-size: 26px;
+  }
+
+  .moodbtn {
+    font-size: 22px;
+  }
+
+  #suggested-activity {
+    width: 75vw;
+  }
 }

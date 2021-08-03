@@ -1,3 +1,5 @@
+let backupMoodId;
+
 const processStoredAum = async (storedAum) => {
   const resMood = await fetch(`/api/mood/${storedAum.mood_id}`);
   if (resMood.ok) {
@@ -31,14 +33,14 @@ const processStoredAum = async (storedAum) => {
     const goodBtn = document.createElement("button");
     const badBtn = document.createElement("button");
     activityResultCaption.innerText =
-      "How did that activity work with your current mood?";
+      "Did the activity work well with your current mood?";
     activityResultCaption.setAttribute("id", "activity-result-caption");
     goodBtn.setAttribute("class", "waves-effect waves-light btn");
     badBtn.setAttribute("class", "waves-effect waves-light btn");
     goodBtn.setAttribute("id", "good-btn");
     badBtn.setAttribute("id", "bad-btn");
-    goodBtn.innerText = "Great!";
-    badBtn.innerText = "Not so good...";
+    goodBtn.innerText = "Yes";
+    badBtn.innerText = "No";
 
     const jsScript = document.createElement("script");
     jsScript.setAttribute("src", "/js/activityResult.js");
@@ -71,14 +73,14 @@ const processStoredAum = async (storedAum) => {
     const goodBtn = document.createElement("button");
     const badBtn = document.createElement("button");
     activityResultCaption.innerText =
-      "How did that activity work with your current mood?";
+      "Did the activity work well with your current mood?";
     activityResultCaption.setAttribute("id", "activity-result-caption");
     goodBtn.setAttribute("class", "waves-effect waves-light btn");
     badBtn.setAttribute("class", "waves-effect waves-light btn");
     goodBtn.setAttribute("id", "good-btn");
     badBtn.setAttribute("id", "bad-btn");
-    goodBtn.innerText = "Great!";
-    badBtn.innerText = "Not so good...";
+    goodBtn.innerText = "Yes";
+    badBtn.innerText = "No";
 
     const jsScript = document.createElement("script");
     jsScript.setAttribute("src", "/js/activityResult.js");
@@ -111,9 +113,13 @@ if (storedAum !== null) {
 }
 
 const addToAUM = async (moodId, activityId) => {
+  if (moodId === null) {
+    moodId = backupMoodId;
+  }
   const userId = document
     .getElementById("dash-container")
     .getAttribute("data-user");
+
   const res = await fetch("/api/aum", {
     method: "POST",
     body: JSON.stringify({
@@ -134,6 +140,7 @@ const addToAUM = async (moodId, activityId) => {
 };
 
 const getActivityRand = async (event) => {
+  backupMoodId = event.target.getAttribute("data-id");
   console.log("RANDOM");
   const userId = document
     .getElementById("dash-container")
@@ -177,14 +184,14 @@ const getActivityRand = async (event) => {
   const goodBtn = document.createElement("button");
   const badBtn = document.createElement("button");
   activityResultCaption.innerText =
-    "How did that activity work with your current mood?";
+    "Did the activity work well with your current mood?";
   activityResultCaption.setAttribute("id", "activity-result-caption");
   goodBtn.setAttribute("class", "waves-effect waves-light btn");
   badBtn.setAttribute("class", "waves-effect waves-light btn");
   goodBtn.setAttribute("id", "good-btn");
   badBtn.setAttribute("id", "bad-btn");
-  goodBtn.innerText = "Great!";
-  badBtn.innerText = "Not so good...";
+  goodBtn.innerText = "Yes";
+  badBtn.innerText = "No";
 
   const jsScript = document.createElement("script");
   jsScript.setAttribute("src", "/js/activityResult.js");
@@ -206,6 +213,7 @@ const getActivityRand = async (event) => {
 };
 
 const getActivity = async (event) => {
+  backupMoodId = event.target.getAttribute("data-id");
   console.log("MAIN");
   const userId = document
     .getElementById("dash-container")
@@ -258,14 +266,14 @@ const getActivity = async (event) => {
   const goodBtn = document.createElement("button");
   const badBtn = document.createElement("button");
   activityResultCaption.innerText =
-    "How did that activity work with your current mood?";
+    "Did the activity work well with your current mood?";
   activityResultCaption.setAttribute("id", "activity-result-caption");
   goodBtn.setAttribute("class", "waves-effect waves-light btn");
   badBtn.setAttribute("class", "waves-effect waves-light btn");
   goodBtn.setAttribute("id", "good-btn");
   badBtn.setAttribute("id", "bad-btn");
-  goodBtn.innerText = "Great!";
-  badBtn.innerText = "Not so good...";
+  goodBtn.innerText = "Yes";
+  badBtn.innerText = "No";
 
   const jsScript = document.createElement("script");
   jsScript.setAttribute("src", "/js/activityResult.js");

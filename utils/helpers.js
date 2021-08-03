@@ -7,4 +7,14 @@ module.exports = {
       date.toLocaleString("en-US", { timeStyle: "short" })
     );
   },
+
+  format_result: (result) => {
+    if (result === true) {
+      return "Yes";
+    } else if (result === false) {
+      return "No";
+    } else {
+      return "N/A";
+    }
+  },
 };
