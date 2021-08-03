@@ -26,13 +26,28 @@
 
   <body>
     <div class="flex-column justify-space-around">
-
+      <ul class="sidenav indigo" id="slide-out">
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/addActivity">Activities</a></li>
+        {{#if loggedIn}}
+          <li><a id="logout2">Logout<i
+                class="material-icons"
+              >logout</i></a></li>
+        {{else}}
+          <li><a id="login2" href="/#login-form">Login<i
+                class="material-icons"
+              >login</i></a></li>
+        {{/if}}
+      </ul>
       <header class="display-flex justify-space-between align-center p-2">
         <div class="navbar-fixed">
           <nav class="nav-wrapper transparent">
             <div class="container">
-              <a href="/" class="brand-logo">FeBe - Feel Better</a>
-              <a href="#" class="sidenav-trigger" data-target="mobile-links">
+              <a href="/" class="brand-logo hide-on-small-only">FeBe - Feel
+                Better</a>
+              <a href="/" class="brand-logo right hide-on-med-and-up">FeBe -
+                Feel Better</a>
+              <a href="#" class="sidenav-trigger" data-target="slide-out">
                 <i class="material-icons">menu</i>
               </a>
               <ul class="right hide-on-med-and-down">
@@ -55,19 +70,6 @@
             </div>
           </nav>
         </div>
-        <ul class="sidenav indigo" id="mobile-links">
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="/addActivity">Activities</a></li>
-          {{#if loggedIn}}
-            <li><a id="logout">Logout<i
-                  class="material-icons"
-                >logout</i></a></li>
-          {{else}}
-            <li><a id="login" href="/#login-form">Login<i
-                  class="material-icons"
-                >login</i></a></li>
-          {{/if}}
-        </ul>
 
       </header>
 
@@ -104,9 +106,7 @@
       {{! PH for logout script to be added in public files }}
       <script src="/js/logout.js"></script>
     {{/if}}
-    <script>
-      $(document).ready(function(){ $('.sidenav').sidenav(); })
-    </script>
+
   </body>
 
 </html>
