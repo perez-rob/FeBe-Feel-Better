@@ -101,7 +101,7 @@ header {
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  z-index: 3;
+  z-index: 6;
   grid-area: header;
 }
 
