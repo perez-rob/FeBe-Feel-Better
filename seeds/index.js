@@ -17,7 +17,7 @@ const seedDatabase = async () => {
 
   await Activity.bulkCreate(activityData);
 
-  await AUM.bulkCreate(aumData);
+  // await AUM.bulkCreate(aumData);
 
   process.exit(0);
 };
