@@ -71,7 +71,7 @@ $(document).ready(function () {
   $(".parallax").parallax();
 });
 
-document.getElementById("login-form").addEventListener("submit", loginForm);
+// document.getElementById("login-form").addEventListener("submit", loginForm);
 if (document.getElementById("login-form")) {
   document.getElementById("login-form").addEventListener("submit", loginForm);
 } else {
